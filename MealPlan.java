@@ -3,16 +3,15 @@ import java.util.Scanner;
 public class MealPlan {
 
     public static void main(String[] args) {
-    	MealPlan test = new MealPlan("basic");
+    	MealPlan test = new MealPlan();
     	System.out.println(test.getDescrition());
     }
-
+    public MealPlan() {
+		for(int i = 0; i < 3; i++)
+			addPizza(1);
+    }
     public MealPlan(String type) {
     	switch(type) {
-    		case("basic"):
-    			for(int i = 0; i < 3; i++)
-    				addPizza(1);
-				break;
     		case("bronze"):
     			for(int i = 0; i < 3; i++)
     				addPizza(2);
