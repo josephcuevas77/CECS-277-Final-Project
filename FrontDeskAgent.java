@@ -13,11 +13,11 @@ public class FrontDeskAgent {
 	}
 	
 	public void addToWaitlist(Reservation r) {
-		
+		waitlist.add(r);
 	}
 	
-	public void removeFromWaitlist() {
-		
+	public void removeFromWaitlist(Reservation r) {
+		waitlist.remove(r);
 	}
 	
 	public void updateGuestInfo() {
