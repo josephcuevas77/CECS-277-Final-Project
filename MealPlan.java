@@ -21,11 +21,8 @@ public class MealPlan {
 
     public double getCost() {return cost;}
     public void setCost(double cost) {this.cost = cost;}
-    public String getDescrition() {
-        return description;
-    }
+    public String getDescrition() {return description;}
     public void setDescription(String description) {this.description = description;}
-
     public String[] getPizzaToppings() {return pizzaToppings;}
     public String[] getWingFlavors() {return wingFlavors;}
     public String[] getIceCreamFlavors() {return iceCreamFlavors;}
