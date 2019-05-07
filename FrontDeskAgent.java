@@ -1,6 +1,7 @@
 package FinalExam;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class FrontDeskAgent {
 	
@@ -20,12 +21,20 @@ public class FrontDeskAgent {
 		waitlist.remove(r);
 	}
 	
-	public void updateGuestInfo() {
-		
+	public void updateGuestInfo(Guest g) {
+		Scanner in = new Scanner(System.in);
+		if (choice == 1){
+			g.setName(in.next);
+		}
 	}
 	
-	public boolean reserved() {
-		
+	public boolean isReserved(Date d) {
+		for (Reservation r : reservations) {
+			if (r.getDate() == d) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public void collectAmountDue() {
