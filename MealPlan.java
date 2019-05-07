@@ -29,6 +29,7 @@ public class MealPlan {
     				addPizza(4);
 				break;
     		default:
+			System.out.println("That meal plan does not exist");
     	}
     	scan.close();
     }
