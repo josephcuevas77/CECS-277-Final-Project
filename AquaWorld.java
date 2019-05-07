@@ -7,6 +7,7 @@ public class AquaWorld {
 	private Scanner in = new Scanner(System.in);
 	
 	private String desc;
+	private String setUp;
 	private int capacity = 75;
 	private MealPlan mealPlan = new MealPlan();
 	private double cost = 700.00;
@@ -16,14 +17,16 @@ public class AquaWorld {
 	
 	public AquaWorld() {
 		desc = "N/A";
+		setUp = "N/A";
 		capacity = 0;
 		cost = 0;
 		hours = 0;
 		mealPlan = new MealPlan();
 	}
 	
-	public AquaWorld(String desc, int capac,int hours, double cost, MealPlan mp) {
+	public AquaWorld(String desc,String setUp, int capac,int hours, double cost, MealPlan mp) {
 		this.desc = "N/A";
+		this.setUp = setUp;
 		this.capacity = 0;
 		this.hours = hours;
 		this.cost = cost;
@@ -59,6 +62,14 @@ public class AquaWorld {
 
 	public void setDesc(String desc) {
 		this.desc = desc;
+	}
+
+	public String getSetUp() {
+		return setUp;
+	}
+
+	public void setSetUp(String setUp) {
+		this.setUp = setUp;
 	}
 
 	public int getCapacity() {
@@ -122,6 +133,7 @@ public class AquaWorld {
 		for(String i : setUpOptions) { 
 			System.out.println(i + " ");
 		}
+		setSetUp(in.nextLine());
 		cost += 100.00;
 	}
 	
