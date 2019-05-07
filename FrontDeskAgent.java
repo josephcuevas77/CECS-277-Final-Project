@@ -53,8 +53,36 @@ public class FrontDeskAgent {
 	 */
 	public void updateGuestInfo(Guest g) {
 		Scanner in = new Scanner(System.in);
-		if (choice == 1){
-			g.setName(in.next);
+		for (Guest g : guests){
+		
+		}
+		
+		switch {
+			case(1):
+				g.setName(in.next);
+				break;
+			case(2):
+				g.setPhoneNumber(in.next);
+				break;
+			case(3):
+				g.setEmail(in.next);
+				break;
+			case(4):
+				g.setCreditCardInfo(in.next);
+				break;
+			case(5):
+				g.setDate(Date date);
+				break;
+			case(6):
+				g.setTime(in.next);
+				break;
+			case(7):
+				g.setMealPlanInfo(in.next);
+				break;
+			case(8):
+				g.setExtraInfo(in.next);
+				break;
+
 		}
 	}
 	
