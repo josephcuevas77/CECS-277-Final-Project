@@ -31,12 +31,12 @@ public class GuestDecorator {
 		String[] stringDate = in.nextLine().split("/");
 		int[] date = new int[stringDate.length];
 		for(int i = 0; i < stringDate.length; i++) date[i] = Integer.parseInt(stringDate[i]);
-		guest.setDate(new Date(date[0], date[1], date[2]);
+		guest.setDate(new Date(date[0], date[1], date[2]));
 			      
-		System.out.print("\nEnter the Time of Reservation: HH:MM);
+		System.out.print("\nEnter the Time of Reservation: HH:MM");
 		guest.setTime(in.nextLine());
 		
-		System.out.print("\nEnter Extra Information or Additional Requests: );
+		System.out.print("\nEnter Extra Information or Additional Requests: ");
 		guest.setExtraInfo(in.nextLine());
 	}
 }
