@@ -84,7 +84,7 @@ public class MealPlan {
     public String[] getSodeBottles() {return sodaBottles;}
 
     /**
-     * Allows the MealPlan object to be printed
+     * Allows the MealPlan object to be printed out
      */
     public String toString() {
         return String.format("Cost: %.2f \nDescription: \n%s", cost, description);
