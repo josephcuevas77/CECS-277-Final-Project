@@ -1,6 +1,6 @@
 package FinalExam;
 
-public class Guest {
+public class Guest extends GuestDecorator {
 	private String name;
 	private String phoneNumber;
 	private String email;
