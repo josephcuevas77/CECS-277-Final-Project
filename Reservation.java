@@ -41,7 +41,7 @@ public class Reservation {
 	}
 	
 	public String toString() {
-		String reserve = "Reservation:\nRoom: " + room + "Date: " + date + "\n" + guest + "Finalized?: " + isFinalized + "\n";
+		String reserve = "Reservation:\nRoom: " + room + "\nDate: " + date + "\n" + guest + "Finalized?: " + isFinalized + "\n";
 		return reserve;
 	}
 	
