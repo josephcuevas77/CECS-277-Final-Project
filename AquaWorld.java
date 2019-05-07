@@ -21,16 +21,14 @@ public class AquaWorld {
 		capacity = 0;
 		cost = 0;
 		hours = 0;
-		mealPlan = new MealPlan();
 	}
 	
-	public AquaWorld(String desc,String setUp, int capac,int hours, double cost, MealPlan mp) {
+	public AquaWorld(String desc,String setUp, int capac,int hours, double cost) {
 		this.desc = "N/A";
 		this.setUp = setUp;
 		this.capacity = 0;
 		this.hours = hours;
 		this.cost = cost;
-		mealPlan = mp;
 	}
 
 	public void upgradeMealPlan() {
@@ -40,7 +38,7 @@ public class AquaWorld {
 		}
 		String choice = in.nextLine();
 		
-		#Justins Alt Code
+		//Justins Alt Code
 		MealPlan temp = new MealPlan(choice);
 		mealPlan = temp;
 		
