@@ -1,8 +1,10 @@
 public abstract class BaseRoom {
 
+    public BaseRoom()
+    
     private String description;
     private int capacity;
-    private int costPerHour;
+    private double costPerHour;
     private MealPlan MealPlan;
 
     public abstract int getFinalCost();
