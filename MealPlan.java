@@ -1,10 +1,20 @@
 //Justin Mabutas
-//Low-key finished
 
 public class MealPlan {
 
+    //$65
+    private static final String BASIC = "\n3 XL 1 Topping Gourmet Pizzas\n32L Soda Bottles";
+    //$75
+    private static final String BRONZE = "\n3 XL 2 Topping Gourmet Pizzas\n52L Soda Bottles\nSalad or bread-sticks";
+    //$90
+    private static final String SILVER = "\n3 XL 2 Topping Gourmet Pizzas\n52L Soda Bottles\nSalad\nBreak-sticks";
+
+
     public static void main(String[] args) {
-        MealPlan standard = new MealPlan(15.0, "Standard");
+        MealPlan standard = new MealPlan(65.0, MealPlan.BASIC);
+        MealPlan bronze = new MealPlan(75.0, MealPlan.BRONZE);
+        MealPlan silver = new MealPlan(75.0, MealPlan.SILVER);
+        System.out.println(String.format("%s\n%s\n%s", standard, bronze, silver));
     }
 
     public MealPlan(double cost, String description) {
@@ -29,6 +39,6 @@ public class MealPlan {
     public String[] getSodeBottles() {return sodaBottles;}
 
     public String toString() {
-        return String.format("Cost: %f.2f \nDescription: %s", cost, description);
+        return String.format("Cost: %.2f \nDescription: %s", cost, description);
     }
 }
