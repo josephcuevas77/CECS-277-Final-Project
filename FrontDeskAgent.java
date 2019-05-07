@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Master class/Employee that has control over all rooms, guest info, and reservations
+ * Master class/Employee that has control over all rooms, guest info, and reservations 
  *
  */
 public class FrontDeskAgent {
