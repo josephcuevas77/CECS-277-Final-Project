@@ -12,22 +12,35 @@ public class KaraokeLounge {
 	private int hours;
 	private String[] mealPlans = {"Basic", "Bronze", "Silver", "Gold", "Platinum"};
 	
+	/**
+	 * Default Constructor: Sets all values to N/A or 0
+	*/
 	public KaraokeLounge() {
 		desc = "N/A";
 		setUp = "N/A";
 		capacity = 0;
-		cost = 0;
 		hours = 0;
 	}
 	
-	public KaraokeLounge(String desc,String setUp, int capac,int hours, double cost) {
+	/**
+	 * Overloaded Constructor
+	 * @param: description
+	 * @param: setup
+	 * @param: capacity
+	 * @param: hours
+	 * @param: description
+	*/
+	public KaraokeLounge(String desc,String setUp, int capac,int hours) {
 		this.desc = desc;
 		this.setUp = setUp;
 		this.capacity = capac;
 		this.hours = hours;
-		this.cost = cost;
 	}
 
+	/**
+	 * Instantiates Meal Plan object
+	 * Prompts user for which meal plan will be added
+	*/
 	public void addMealPlan() {
 		System.out.println("Which meal plan would you like to add?\n");
 		for(String i : mealPlans) { 
@@ -57,62 +70,65 @@ public class KaraokeLounge {
 		}
 	}	
 	
+	/**
+	 * Getter method for the description of the room
+	 * @return desc
+	 */
 	public String getDesc() {
 		return desc;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
-	}
-
+	/**
+	 * Getter method for the setup of the room
+	 * @return setUp
+	 */
 	public String getSetUp() {
 		return setUp;
 	}
 
-	public void setSetUp(String setUp) {
-		this.setUp = setUp;
-	}
-
+	/**
+	 * Getter method for the capacity of the room
+	 * @return capacity
+	 */
 	public int getCapacity() {
 		return capacity;
 	}
 
-	public void setCapacity(int capacity) {
-		this.capacity = capacity;
-	}
-
+	/**
+	 * Returns the current meal plan of the room
+	 * @return mealPlan
+	 */
 	public MealPlan getMealPlan() {
 		return mealPlan;
 	}
 
-	public void setMealPlan(MealPlan mealPlan) {
-		this.mealPlan = mealPlan;
-	}
-
+	/**
+	 * Returns the final cost of the meal
+	 * @return cost per hour
+	 */
 	public double getCost() {
 		return cost;
 	}
 
-	public void setCost(double cost) {
-		this.cost = cost;
-	}
-
+	/**
+	 * Returns the hours of the rooms reservation
+	 * @return
+	 */
 	public int getHours() {
 		return hours;
 	}
 
+	/**
+	 * Sets the hours of the rooms reservation
+	 * @param hours
+	 */
 	public void setHours(int hours) {
 		this.hours = hours;
 	}
 
-	public void rentTowel() {
-		double add = 0.0;
-		System.out.println("How many towels would you like to rent?");
-		int amount = in.nextInt();
-		add += (5 * amount);
-		cost+= add;
-	}
-	
+	/**
+	 * Adds cost of party bag favors to total cost
+	 */
 	public void orderPartyBagFavor() {
 		double add = 0.0;
 		System.out.println("How many bags would you like to order?");
@@ -121,6 +137,9 @@ public class KaraokeLounge {
 		cost+= add;
 	}
 	
+	/**
+	 * Adds cost of including the projector
+	 */
 	public void includeProjector() {
 		double add = 0.0;
 		System.out.println("How many hours would you like to rent the projector?");
@@ -129,6 +148,9 @@ public class KaraokeLounge {
 		cost+= add;
 	}
 	
+	/**
+	 * Prompts the user for which setup will be used
+	 */
 	public void setUp() {
 		System.out.println("Which Theme Set-Up would you like?");
 		for(String i : setUpOptions) { 
