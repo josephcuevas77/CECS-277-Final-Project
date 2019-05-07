@@ -6,5 +6,5 @@ public abstract class BaseRoom {
     private MealPlan MealPlan;
 
     public abstract int getFinalCost();
-    public abstract Employee createRoom(Baseroom room);
+    public abstract void createRoom(Baseroom room);
 }
