@@ -2,18 +2,30 @@ package FinalExam;
 
 import java.util.Scanner;
 
+/**
+* Extension of Guest that allows for more methods
+*/
 public class GuestDecorator {
 	
 	private Scanner in = new Scanner(System.in);
 
+	/**
+	* Indicates that guset would like to check in to room reserved
+	*/
 	public void checkIn() {
 		System.out.println("I would like to check in!");
 	}
 	
+	/**
+	* Indicates that guset would like to check out of room reserved
+	*/
 	public void checkOut() {
 		System.out.println('I would like to check out!");
 	}
 	
+	/**
+	* Prompts for info of guest to be entered into the system
+	*/
 	public void enterGuestInfo(Guest guest) {
 		System.out.print("Name of Guest: ");
 		guest.setName(in.nextLine());
