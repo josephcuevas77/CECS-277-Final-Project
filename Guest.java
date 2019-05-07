@@ -108,5 +108,11 @@ public class Guest extends GuestDecorator {
 		Guest guest1 = new Guest("Joseph Cuevas", "(714) 714-7147", "joseph@gmail.com", "AMEX 0000 XXXX", date, "12:00", "Deluxe Meal Plan", "extraInfo" );
 		System.out.println(guest);
 		System.out.println(guest1);
+		
+		guest1.checkIn();
+		guest1.checkOut();
+		enterGuestInfo(guest);
+		System.out.println(guest);
+		
 	}
 }
