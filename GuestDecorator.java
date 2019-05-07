@@ -7,11 +7,11 @@ public class GuestDecorator {
 	private Scanner in = new Scanner(System.in);
 
 	public void checkIn() {
-		
+		System.out.println("I would like to check in!");
 	}
 	
 	public void checkOut() {
-		
+		System.out.println('I would like to check out!");
 	}
 	
 	public void enterGuestInfo(Guest guest) {
