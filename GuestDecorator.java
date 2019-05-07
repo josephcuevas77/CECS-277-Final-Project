@@ -24,7 +24,9 @@ public class GuestDecorator {
 		System.out.println("\nCredit Card Info: ");
 		guest.setCreditCardInfo(in.nextLine());
 		System.out.println("\nEnter the Date of Reservation: MM/DD/YYYY");
-		String date = in.nextLine();
-		date.split("/");
+		String[] stringDate = in.nextLine().split("/");
+		//date[0] is month date[1] is day date[2] is year
+		int[] date = new int[stringDate.length];
+		for(int i = 0; i < stringDate.length; i++) date[i] = Integer.parseInt(stringDate[i]);
 	}
 }
