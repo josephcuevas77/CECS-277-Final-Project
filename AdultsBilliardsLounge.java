@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 /**
  * Adult Billiards Lounge Class which objects can be created from factories 
- * @author Joseph
  *
  */
 public class AdultsBilliardsLounge {
