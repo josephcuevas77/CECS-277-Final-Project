@@ -5,7 +5,6 @@ public class MealPlan {
 
     public static void main(String[] args) {
         MealPlan standard = new MealPlan(15.0, "Standard");
-
     }
 
     public MealPlan(double cost, String description) {
