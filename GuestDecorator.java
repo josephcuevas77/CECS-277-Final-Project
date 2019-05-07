@@ -15,18 +15,28 @@ public class GuestDecorator {
 	}
 	
 	public void enterGuestInfo(Guest guest) {
-		System.out.println("Name of Guest: ");
+		System.out.print("Name of Guest: ");
 		guest.setName(in.nextLine());
-		System.out.println("\nPhone Number: ");
+		
+		System.out.print("\nPhone Number: ");
 		guest.setPhoneNumber(in.nextLine());
-		System.out.println("\nEmail: ");
+		
+		System.out.print("\nEmail: ");
 		guest.setEmail(in.nextLine());
-		System.out.println("\nCredit Card Info: ");
+		
+		System.out.print("\nCredit Card Info: ");
 		guest.setCreditCardInfo(in.nextLine());
-		System.out.println("\nEnter the Date of Reservation: MM/DD/YYYY");
+		
+		System.out.print("\nEnter the Date of Reservation: MM/DD/YYYY");
 		String[] stringDate = in.nextLine().split("/");
-		//date[0] is month date[1] is day date[2] is year
 		int[] date = new int[stringDate.length];
 		for(int i = 0; i < stringDate.length; i++) date[i] = Integer.parseInt(stringDate[i]);
+		guest.setDate(new Date(date[0], date[1], date[2]);
+			      
+		System.out.print("\nEnter the Time of Reservation: HH:MM);
+		guest.setTime(in.nextLine());
+		
+		System.out.print("\nEnter Extra Information or Additional Requests: );
+		guest.setExtraInfo(in.nextLine());
 	}
 }
