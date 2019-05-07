@@ -36,6 +36,11 @@ public class AquaWorld {
 			System.out.println(i + " ");
 		}
 		String choice = in.nextLine();
+		
+		#Justins Alt Code
+		MealPlan temp = new MealPlan(choice);
+		mealPlan = temp;
+		
 		switch(choice) {
 			case "Bronze":
 				cost += (3 * 10);
