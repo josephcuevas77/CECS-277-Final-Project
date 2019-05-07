@@ -12,7 +12,7 @@ public class Date {
 		year = 0;
 	}
 	
-	public Date(int day,int month,int year) {
+	public Date(int month,int day,int year) {
 		this.day = day;
 		this.month = month;
 		this.year = year;
@@ -43,7 +43,7 @@ public class Date {
 	}
 
 	public String toString() {
-		return day + "/" + month + "/" + year;
+		return month + "/" + day + "/" + year;
 	}
 	
 	public boolean equals(Date date) { return(this.day == date.day && this.month == date.month && this.year == date.year); }
