@@ -1,15 +1,28 @@
+package FinalExam;
+
 import java.util.Scanner;
 
 public class MealPlan {
+	
+	public static String[] mealPlans = {"Bronze", "Silver", "Gold", "Platinum"};
 
     public static void main(String[] args) {
     	MealPlan test = new MealPlan();
     	System.out.println(test.getDescrition());
     }
+    
+    /**
+     * Default Constructor for basic mealPlan
+     */
     public MealPlan() {
 		for(int i = 0; i < 3; i++)
 			addPizza(1);
     }
+    
+    /**
+     * Overloaded constructor for more toppings/pizzas with meal plan
+     * @param type - type of mealPlan
+     */
     public MealPlan(String type) {
     	switch(type) {
     		case("bronze"):
@@ -43,7 +56,10 @@ public class MealPlan {
     private String[] iceCreamFlavors = "Chocolate_Fudge Vanilla_Bean Strawberry_Shortcake Choco-mint Butter_Pecan".split(" ");
     private String[] sodaBottles = "Coca-Cola Diet_Coke Canada_Dry Orange_Crush Squirt Root_Beer".split(" ");
 
-    //These functions are used for the description
+    /**
+     * These functions are used for the description
+     * @param numToppings - number of Toppings on pizza
+     */
     private void addPizza(int numToppings) {
     	System.out.println(String.format("For your %d topping pizza :^D", numToppings));
     	String temp = "Pizza\n Toppings: ";
@@ -67,8 +83,9 @@ public class MealPlan {
     public String[] getIceCreamFlavors() {return iceCreamFlavors;}
     public String[] getSodeBottles() {return sodaBottles;}
 
-    
-    
+    /**
+     * Allows the MealPlan object to be printed
+     */
     public String toString() {
         return String.format("Cost: %.2f \nDescription: \n%s", cost, description);
     }
