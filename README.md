@@ -17,6 +17,7 @@ Made a BaseFactory and a single ConcreteFactory instead of 5 seperate factories<
   I changed it because having a single factory seems more concise and it also does this in the BlackWasp example<br>
 Updated Meal Plan as per Varela's request<br>
 Updated BaseRoom and Aqua World so that they are usable, i.e. they don't require console user input.<br>
+Updated BaseRoom and Aqua World so that BaseRoom contains all the instance variables and any subclass of BaseRoom only modifies said variables. 
 
 
 -Justin
