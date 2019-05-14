@@ -2,72 +2,29 @@ package FinalExam;
 
 import java.util.Scanner;
 
-public class AquaWorld {
-	
-	private Scanner in = new Scanner(System.in);
+public class AquaWorld extends BaseRoom{
 	
 	private String desc;
+	private String includedInCost;
 	private String setUp;
 	private int capacity = 75;
 	private double cost;
+	private int hours;
 	private MealPlan mealPlan = new MealPlan();
 	private final double costPerHour = 700.00;
-	private int hours;
 	private String[] setUpOptions = {"Hawaiian", "Sea Life", "Jungle", "Space"," Modern"};
 	
 	/**
 	 * Default constructor for AquaWorld Room
 	 */
 	public AquaWorld() {
-		desc = "N/A";
-		setUp = "N/A";
+		desc = "Olympic-sized pool with water slide, kiddie pool, and large jacuuzi.";
+		includedInCost = "Access to showers/lockers, life guards on duty, DJ, table & chair set-up, Basic Meal Plan";
 		capacity = 75;
-		cost = 0;
 		hours = 0;
+		cost = 0;
 		mealPlan = new MealPlan();
 	}
-	
-	/**
-	 * Overloaded Constructor of AquaWorld 
-	 * @param desc - description of room
-	 * @param setUp - decorations of Room
-	 * @param capac - capacity of Room
-	 * @param hours - hours reserved
-	 * @param cost - cost of room
-	 * @param mp - meal plan of room
-	 */
-	public AquaWorld(String desc,String setUp,int hours, double cost, MealPlan mp) {
-		this.desc = "N/A";
-		this.setUp = setUp;
-		this.hours = hours;
-		this.cost = cost;
-		mealPlan = mp;
-	}
-
-	/**
-	 * Allows the Employee to upgrade the meal plan if customer requests
-	 */
-	public void upgradeMealPlan() {
-		System.out.println("Which meal plan would you like to upgrade to?\n");
-		for(String i : MealPlan.mealPlans) { 
-			System.out.println(i + " ");
-		}
-		String choice = in.nextLine();
-		
-		MealPlan temp = new MealPlan(choice);
-		mealPlan = temp;
-		
-		switch(choice) {
-			case "Bronze":
-				cost += (3 * 10);
-			case "Silver":
-				cost += (3 * 25);
-			case "Gold":
-				cost += (3 * 55);
-			case "Platinum":
-				cost += (3 * 85);
-		}
-	}	
 	
 	/**
 	 * gets Description
@@ -76,13 +33,13 @@ public class AquaWorld {
 	public String getDesc() {
 		return desc;
 	}
-
+	
 	/**
-	 * sets description of room
-	 * @param desc - description of room
+	 * gets getIncludedContent
+	 * @return description
 	 */
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public String getIncludedContent() {
+		return includedInCost;
 	}
 
 	/**
@@ -99,6 +56,7 @@ public class AquaWorld {
 	 */
 	public void setSetUp(String setUp) {
 		this.setUp = setUp;
+		cost += 100;
 	}
 
 	/**
@@ -150,47 +108,24 @@ public class AquaWorld {
 	}
 
 	/**
-	 * allows employee to add towels if customer likes
+	 * adds 
 	 */
-	public void rentTowel() {
-		double add = 0.0;
-		System.out.println("How many towels would you like to rent?");
-		int amount = in.nextInt();
-		add += (5 * amount);
-		cost+= add;
+	public void rentTowel(int num) {
+		cost += 5*num;
 	}
 	
 	/**
 	 * allows employee to add party bag faovrs if customer likes
 	 */
-	public void orderPartyBagFavor() {
-		double add = 0.0;
-		System.out.println("How many bags would you like to order?");
-		int amount = in.nextInt();
-		add += (5 * amount);
-		cost+= add;
+	public void orderPartyBagFavor(int num) {
+		cost+= 5*num;
 	}
 	
 	/**
-	 * adds to cost if customer wants a projector
+	 * adds to cost if customer wants a projector. 1 hr = $10
 	 */
-	public void includeProjector() {
-		double add = 0.0;
-		System.out.println("How many hours would you like to rent the projector?");
-		int hours = in.nextInt();
-		add += (10 * hours);
-		cost+= add;
-	}
-	
-	/**
-	 * prompts the customer which set up of decorations they would like
-	 */
-	public void setUp() {
-		System.out.println("Which Theme Set-Up would you like?");
-		for(String i : setUpOptions) { 
-			System.out.println(i + " ");
-		}
-		cost += 100.00;
+	public void includeProjector(int timeInHours) {
+		cost+= 10*timeInHours;
 	}
 	
 	/**
@@ -198,8 +133,16 @@ public class AquaWorld {
 	 * @return boolean based on response
 	 */
 	public boolean checkGuest() {
-		System.out.println("Is customer wearing bathing suit? Y/N?");
-		String answer = in.next();
-		return(answer.equalsIgnoreCase("y"));
+		//Implement later. No idea what to do
+		return false;
+	}
+
+	/**
+	 * getFinalCost
+	 * returns flat rate fee per hour + any further expenses
+	 */
+	@Override
+	public double getFinalCost() {
+		return cost + costPerHour*hours;
 	}
 }

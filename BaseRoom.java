@@ -45,9 +45,4 @@ public abstract class BaseRoom {
      * @return the final cost of the room
      */
     public abstract double getFinalCost();
-    /**
-     * creates a specific room
-     * @param room
-     */
-    public abstract void createRoom(Baseroom room);
 }
