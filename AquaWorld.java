@@ -1,137 +1,58 @@
 package FinalExam;
 
-import java.util.Scanner;
-
-public class AquaWorld extends BaseRoom{
+public class AquaWorld extends BaseRoom {
 	
-	private String desc;
-	private String includedInCost;
-	private String setUp;
-	private int capacity = 75;
-	private double cost;
-	private int hours;
-	private MealPlan mealPlan = new MealPlan();
-	private final double costPerHour = 700.00;
-	private String[] setUpOptions = {"Hawaiian", "Sea Life", "Jungle", "Space"," Modern"};
+	public static void main(String[] args) {
+		AquaWorld test = new AquaWorld();
+		test.setHours(4);
+		test.rentTowel(5);
+		test.orderPartyBagFavor(10);
+		test.includeProjector(7);
+		test.setSetup(2);
+		test.upgradeMealPlan(4);
+		System.out.println(test);
+	}
+	
+	public static String[] setupOptions = {"Hawaiian", "Sea Life", "Jungle", "Space"," Modern"};
 	
 	/**
 	 * Default constructor for AquaWorld Room
 	 */
 	public AquaWorld() {
-		desc = "Olympic-sized pool with water slide, kiddie pool, and large jacuuzi.";
-		includedInCost = "Access to showers/lockers, life guards on duty, DJ, table & chair set-up, Basic Meal Plan";
-		capacity = 75;
-		hours = 0;
-		cost = 0;
-		mealPlan = new MealPlan();
+		setRoomType("Aqua World");
+		setDescription("Olympic-sized pool with water slide, kiddie pool, and large jacuuzi.");
+		setIncludedInCost("Access to showers/lockers, life guards on duty, DJ, table & chair set-up, Basic Meal Plan");
+		setCapacity(75);
+		setCostPerHour(700.00);
+		setMealPlan(new MealPlan());
 	}
 	
-	/**
-	 * gets Description
-	 * @return description
-	 */
-	public String getDesc() {
-		return desc;
+	public void upgradeMealPlan(int num) {
+		double previousMealPlanCost = getMealPlan().getCost();
+		setMealPlan(new MealPlan(num));
+		getMealPlan().setCost(5*(getMealPlan().getCost()-previousMealPlanCost));
 	}
 	
-	/**
-	 * gets getIncludedContent
-	 * @return description
-	 */
-	public String getIncludedContent() {
-		return includedInCost;
+	public void setSetup(int num) {
+		updateDescriptionOfAddOns("Setup: " + setupOptions[num] + " ($100.00)\n");
+		updateCostOfAddOns(100);
 	}
 
-	/**
-	 * gets Set up of room
-	 * @return setUp
-	 */
-	public String getSetUp() {
-		return setUp;
-	}
-
-	/**
-	 * sets the setUp of room
-	 * @param setUp of room
-	 */
-	public void setSetUp(String setUp) {
-		this.setUp = setUp;
-		cost += 100;
-	}
-
-	/**
-	 * gets Capacity of room
-	 * @return capacity
-	 */
-	public int getCapacity() {
-		return capacity;
-	}
-
-	/**
-	 * gets meal plan of room
-	 * @return meal plan
-	 */
-	public MealPlan getMealPlan() {
-		return mealPlan;
-	}
-
-	/**
-	 * sets the meal plan to desired one
-	 * @param mealPlan of room
-	 */
-	public void setMealPlan(MealPlan mealPlan) {
-		this.mealPlan = mealPlan;
-	}
-
-	/**
-	 * returns caluclated cost of room
-	 * @return
-	 */
-	public double getCost() {
-		return cost;
-	}
-
-	/**
-	 * gets the amount of hours room is being rented
-	 * @return the number of hours
-	 */
-	public int getHours() {
-		return hours;
-	}
-
-	/**
-	 * set the number of hours being reserved
-	 * @param hours being reserved
-	 */
-	public void setHours(int hours) {
-		this.hours = hours;
-	}
-
-	/**
-	 * adds 
-	 */
 	public void rentTowel(int num) {
-		cost += 5*num;
+		updateDescriptionOfAddOns(String.format("%d towels ($%.2f)\n", num, num*5.0));
+		updateCostOfAddOns(5*num);
 	}
 	
-	/**
-	 * allows employee to add party bag faovrs if customer likes
-	 */
 	public void orderPartyBagFavor(int num) {
-		cost+= 5*num;
+		updateDescriptionOfAddOns(String.format("%d party bag favors ($%.2f)\n", num, num*5.0));
+		updateCostOfAddOns(5*num);
 	}
 	
-	/**
-	 * adds to cost if customer wants a projector. 1 hr = $10
-	 */
 	public void includeProjector(int timeInHours) {
-		cost+= 10*timeInHours;
+		updateDescriptionOfAddOns(String.format("%d hours of projector use ($%.2f)\n", timeInHours, timeInHours*10.0));
+		updateCostOfAddOns(10*timeInHours);
 	}
 	
-	/**
-	 * Checks if guest is wearing bathing suit to enter
-	 * @return boolean based on response
-	 */
 	public boolean checkGuest() {
 		//Implement later. No idea what to do
 		return false;
@@ -143,6 +64,6 @@ public class AquaWorld extends BaseRoom{
 	 */
 	@Override
 	public double getFinalCost() {
-		return cost + costPerHour*hours;
+		return getFlatRateFee() + getCostOfAddOns() + getMealPlan().getCost();
 	}
 }

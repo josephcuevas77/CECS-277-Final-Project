@@ -48,7 +48,7 @@ public class MealPlan {
     public static String[] iceCreamFlavors = "Chocolate_Fudge Vanilla_Bean Strawberry_Shortcake Choco-mint Butter_Pecan".split(" ");
     public static String[] sodaBottles = "Coca-Cola Diet_Coke Canada_Dry Orange_Crush Squirt Root_Beer".split(" ");
 
-    private String mealPlan ="";
+    private String mealPlan = "";
     private double cost=0;
     private String description = "";
     private ArrayList<String> pizzas = new ArrayList<String>();
@@ -98,6 +98,7 @@ public class MealPlan {
     }
     
     public double getCost() {return cost;}
+    public void setCost(double cst) {cost = cst;} 
     public String getDescrition() {return description;}
     public String getSpecifics() {
     	String specifics = "";
@@ -110,10 +111,7 @@ public class MealPlan {
     	if(specifics.equals("")) specifics = "N/A";
     	return specifics;
     }
-    /**
-     * Allows the MealPlan object to be printed out
-     */
     public String toString() {
-        return String.format("Meal Plan: %s\nCost: %.2f \n-Description- \n%s\n-Specifics-\n%s\n", mealPlan, cost, description, getSpecifics());
+        return String.format("Meal Plan: %s\nCost: %.2f \n-Description- \n%s\n-Meal Plan Specifics-\n%s\n", mealPlan, cost, description, getSpecifics());
     }
 }
