@@ -8,7 +8,7 @@ import java.util.ArrayList;
  */
 public class Reservation {
 	public static String[] roomOptions = {"Small Party Room"," Medium Party Room", "Karaoke Lounge", "Adults Billiards Lounge", "Aqua World"};
-	private BaseRoom BaseRoom;
+	private BaseRoom baseRoom;
 	private Date date;
 	private Guest guest;
 	private boolean isFinalized;
@@ -17,7 +17,7 @@ public class Reservation {
 	 * Default constructor for Reservation
 	 */
 	public Reservation() {
-		BaseRoom = new BaseRoom(roomOptions[0]);
+		baseRoom = null;
 		date = new Date();
 		guest = new Guest();
 		isFinalized = false;
@@ -31,7 +31,7 @@ public class Reservation {
 	 * @param isF - checks if reservation is finalized
 	 */
 	public Reservation(BaseRoom BaseRoom,Date date, Guest guest, boolean isF) {
-		this.BaseRoom = BaseRoom;
+		this.baseRoom = BaseRoom;
 		this.date = date;
 		this.guest = guest;
 		this.isFinalized = isF;
@@ -42,7 +42,7 @@ public class Reservation {
 	 * @return base room
 	 */
 	public BaseRoom getBaseRoom() {
-		return BaseRoom;
+		return baseRoom;
 	}
 
 	/**
@@ -50,7 +50,7 @@ public class Reservation {
 	 * @param BaseRoom to be set
 	 */
 	public void setBaseRoom(BaseRoom BaseRoom) {
-		this.BaseRoom = BaseRoom;
+		this.baseRoom = BaseRoom;
 	}
 
 	/**
@@ -81,7 +81,7 @@ public class Reservation {
 	 * Allows the reservation to be printed out as a String
 	 */
 	public String toString() {
-		String reserve = "Reservation:\nRoom: " + BaseRoom + "\nDate: " + date + "\n" + guest + "Finalized?: " + isFinalized + "\n";
+		String reserve = "Reservation:\nRoom: " + baseRoom + "\nDate: " + date + "\n" + guest + "Finalized?: " + isFinalized + "\n";
 		return reserve;
 	}
 	
