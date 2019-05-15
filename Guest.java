@@ -185,6 +185,10 @@ public class Guest extends GuestDecorator {
 	public void setExtraInfo(String extraInfo) {
 		this.extraInfo = extraInfo;
 	}
+	
+	public boolean getCheckInStatus() {
+		return isCheckedIn;	
+	}
 
 	public void checkIn() {
 		isCheckedIn = true;	
