@@ -1,6 +1,6 @@
 package FinalExam;
 
-public class SmallPartyRoom extends BaseRoom {
+public class SmallPartyRoom extends BaseRoom implements PartyRoomDecorator{
 	
 	public static void main(String[] args) {
 		SmallPartyRoom test = new SmallPartyRoom();
