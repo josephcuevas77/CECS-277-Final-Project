@@ -1,10 +1,13 @@
 package FinalExam;
 
+import java.util.ArrayList;
+
 /**
  * Creates reservation objects to be checked by employee
  *
  */
 public class Reservation {
+	public static String[] roomOptions = {"Small Party Room"," Medium Party Room", "Karaoke Lounge", "Adults Billiards Lounge", "Aqua World"};
 	private BaseRoom BaseRoom;
 	private Date date;
 	private Guest guest;
@@ -14,7 +17,7 @@ public class Reservation {
 	 * Default constructor for Reservation
 	 */
 	public Reservation() {
-		BaseRoom = new BaseRoom();
+		BaseRoom = new BaseRoom(roomOptions[0]);
 		date = new Date();
 		guest = new Guest();
 		isFinalized = false;
