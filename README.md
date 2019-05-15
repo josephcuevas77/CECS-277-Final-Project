@@ -13,7 +13,7 @@ Updated BaseRoom and Aqua World so that they are usable, i.e. they don't require
 Updated BaseRoom and Aqua World so that BaseRoom contains all the instance variables and any subclass of BaseRoom only modifies said variables. 
 
 
-PREPARE THESE SLIDES FOR PRESENTATION
+PREPARE THESE SLIDES FOR PRESENTATION <br>
 Structural Design Pattern (Decorator):
 
 Creational Design Pattern (Abstract Factory): 
