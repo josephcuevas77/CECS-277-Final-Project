@@ -1,88 +1,60 @@
 package FinalExam;
 
-import java.util.Scanner;
-
-/**
- * Adult Billiards Lounge Class which objects can be created from factories 
- *
- */
-public class AdultsBilliardsLounge {
-
-	Scanner in = new Scanner(System.in);
+public class MediumPartyRoom extends BaseRoom {
 	
-	private final int maxRooms = 5;
-	private String desc;
-	private int capacity = 75;
-	private MealPlan mealPlan = new MealPlan();
-	private double cost = 25.00;
-	private int hours;
+	public static void main(String[] args) {
+		AquaWorld test = new AquaWorld();
+		test.setHours(4);
+		test.rentTowel(5);
+		test.orderPartyBagFavor(10);
+		test.includeProjector(7);
+		test.setSetup(2);
+		test.upgradeMealPlan(4);
+		System.out.println(test);
+	}
+	
+	public static String[] setupOptions = {"Hawaiian", "Sea Life", "Jungle", "Space"," Modern"};
 	
 	/**
-	 * Default Constructor for Lounge
+	 * Default constructor for AquaWorld Room
 	 */
-	public AdultsBilliardsLounge() {
-		desc = "N/A";
-		capacity = 0;
-		cost = 0;
-		hours = 0;
-		mealPlan = new MealPlan();
+	public MediumPartyRoom() {
+		setRoomType("Medium Party Room");
+		setDescription("Room with party tables and chairs, quick access to arcade.");
+		setIncludedInCost("Table & chair set-up, DJ, Basic Meal Plan");
+		setCapacity(45);
+		setCostPerHour(250.00);
+		setMealPlan(new MealPlan());
+	}
+	
+	public void upgradeMealPlan(int num) {
+		double previousMealPlanCost = getMealPlan().getCost();
+		setMealPlan(new MealPlan(num));
+		getMealPlan().setCost(5*(getMealPlan().getCost()-previousMealPlanCost));
+	}
+	
+	public void setSetup(int num) {
+		updateDescriptionOfAddOns("Setup: " + setupOptions[num] + " ($100.00)\n");
+		updateCostOfAddOns(100);
+	}
+	
+	public void orderPartyBagFavor(int num) {
+		updateDescriptionOfAddOns(String.format("%d party bag favors ($%.2f)\n", num, num*5.0));
+		updateCostOfAddOns(5*num);
+	}
+	
+	public void includeProjector(int timeInHours) {
+		updateDescriptionOfAddOns(String.format("%d hours of projector use ($%.2f)\n", timeInHours, timeInHours*10.0));
+		updateCostOfAddOns(10*timeInHours);
 	}
 	
 	/**
-	 * Overloaded Constructor for Lounge
-	 * @param desc - description of Room
-	 * @param capac - capacity of Room
-	 * @param hours - hour of reserved
+	 * getFinalCost
+	 * returns flat rate fee per hour + any further expenses
 	 */
-	public AdultsBilliardsLounge(String desc, int capac, int hours) {
-		this.desc = desc;
-		this.capacity = capac;
-		this.hours = hours;
-		this.mealPlan = new MealPlan();
+	@Override
+	public double getFinalCost() {
+		return getFlatRateFee() + getCostOfAddOns() + getMealPlan().getCost();
 	}
-	
-	/**
-	 * Adds a meal plan and adds to cost of overall room
-	 */
-	public void addMealPlan() {
-		System.out.println("Which meal plan would you like to add to your room?\n");
-		for(String i : MealPlan.mealPlans) { 
-			System.out.println(i + " ");
-		}
-		String choice = in.nextLine();
-		
-		//Justins Alt Code
-		MealPlan temp = new MealPlan(choice);
-		mealPlan = temp;
-		
-		switch(choice) {
-			case "Basic":
-				cost += 65.00;
-			case "Bronze":
-				cost += 75.00;
-				break;
-			case "Silver":
-				cost += 90.00;
-				break;
-			case "Gold":
-				cost += 120.00;
-				break;
-			case "Platinum":
-				cost += 150.00;
-				break;
-			default:
-				System.out.println("Meal Plan does not exist!");
-		}
-	}
-	
-	/**
-	 * Checks if guest are 21+ and returns bool
-	 * @return true if guests are 21+, false otherwise
-	 */
-	public boolean checkGuest() {
-		System.out.println("Are guests 21 or older? Y/N?");
-		String answer = in.next();
-		return(answer.equalsIgnoreCase("y"));
-	}
-	
 }
+
