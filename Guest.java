@@ -18,6 +18,7 @@ public class Guest extends GuestDecorator {
 	private String time;
 	private String mealPlanInfo;
 	private String extraInfo;
+	private boolean isCheckedIn;
 	
 	/**
 	 * default constructor
@@ -31,6 +32,7 @@ public class Guest extends GuestDecorator {
 		time = "N/A";
 		mealPlanInfo = "N/A";
 		extraInfo = "N/A";
+		isCheckedIn = false;
 	}
 	
 	/**
@@ -53,6 +55,7 @@ public class Guest extends GuestDecorator {
 		this.time = time;
 		this.mealPlanInfo = MPI;
 		this.extraInfo = EI;
+		isCheckedIn = false;
 	}
 	
 	/**
@@ -183,6 +186,14 @@ public class Guest extends GuestDecorator {
 		this.extraInfo = extraInfo;
 	}
 
+	public void checkIn() {
+		isCheckedIn = true;	
+	}
+	
+	public void checkOut() {
+		isCheckedIn = false;	
+	}
+	
 	/**
 	 * toString that formats the guest info
 	 * @return the guest info
