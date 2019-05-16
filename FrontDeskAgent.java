@@ -9,6 +9,7 @@ import java.util.Scanner;
  */
 public class FrontDeskAgent {
 	
+	private static ConcreteRoomFactory factory = new ConcreteRoomFactory();
 	private static ArrayList<Guest> guests = new ArrayList<Guest>();
 	private static ArrayList<Reservation> reservations = new ArrayList<Reservation>();
 	private static ArrayList<Reservation> waitlist = new ArrayList<Reservation>();
@@ -17,19 +18,19 @@ public class FrontDeskAgent {
 	private static ArrayList<SmallPartyRoom> SmallPartyRooms = new ArrayList<SmallPartyRoom>();
 	private static ArrayList<MediumPartyRoom> MediumPartyRooms = new ArrayList<MediumPartyRoom>();
 	private static ArrayList<KaraokeLounge> KaraokeLounges = new ArrayList<KaraokeLounge>();
-	private static ArrayList<AdultBillardsLounge> AdultBilliardsLounges = new ArrayList<AdultBillardsLounge>();
+	private static ArrayList<AdultsBilliardsLounge> AdultBilliardsLounges = new ArrayList<AdultsBilliardsLounge>();
 
 	public static void generateAllRooms() {
 		if(AquaWorldRooms.size()==0) 
-			for(int i = 0 ; i < BaseRoomFactory.MAX_AQUA_WORLD_ROOMS; i++) ConcreteRoomFactory.createRoom(0);
+			for(int i = 0 ; i < BaseRoomFactory.MAX_AQUA_WORLD_ROOMS; i++) factory.createRoom(0);
 		if(SmallPartyRooms.size()==0)
-			for(int i = 0 ; i < BaseRoomFactory.MAX_SMALL_PARTY_ROOMS; i++) ConcreteRoomFactory.createRoom(1);
+			for(int i = 0 ; i < BaseRoomFactory.MAX_SMALL_PARTY_ROOMS; i++) factory.createRoom(1);
 		if(MediumPartyRooms.size()==0)
-			for(int i = 0 ; i < BaseRoomFactory.MAX_MEDIUM_PARTY_ROOMS; i++) ConcreteRoomFactory.createRoom(2);
+			for(int i = 0 ; i < BaseRoomFactory.MAX_MEDIUM_PARTY_ROOMS; i++) factory.createRoom(2);
 		if(KaraokeLounges.size()==0)
-			for(int i = 0 ; i < BaseRoomFactory.MAX_KARAOKE_LOUNGE; i++) ConcreteRoomFactory.createRoom(3);
+			for(int i = 0 ; i < BaseRoomFactory.MAX_KARAOKE_LOUNGE; i++) factory.createRoom(3);
 		if(AdultBilliardsLounges.size()==0)
-			for(int i = 0 ; i < BaseRoomFactory.MAX_ADULT_BILLIARDS_LOUNGE; i++) ConcreteRoomFactory.createRoom(4);
+			for(int i = 0 ; i < BaseRoomFactory.MAX_ADULT_BILLIARDS_LOUNGE; i++) factory.createRoom(4);
 	}
 	
 	/**
@@ -67,6 +68,14 @@ public class FrontDeskAgent {
 			return false;
 		}
 		return true;
+	}
+	
+	public ArrayList<Guest> getGuests() {
+		return guests;
+	}
+	
+	public ArrayList<Reservation> getWaitList() {
+		return waitlist;
 	}
 	
 	/**
