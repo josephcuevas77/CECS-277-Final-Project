@@ -13,6 +13,11 @@ import javax.swing.JTextField;
 
 public class CheckOutFrame extends JFrame{
 	
+	public static void main(String[] args) {
+		CheckOutFrame f = new CheckOutFrame();
+		f.setVisible(true);
+	}
+	
 	private static final long serialVersionUID = 1L;
 
 	private JButton button;
@@ -63,6 +68,9 @@ public class CheckOutFrame extends JFrame{
 		panel.add(textField1);
 		panel.add(label2);
 		panel.add(textField2);
+		
+		double repairFunds = Integer.parseInt(textField1.getText());
+		String repairDescription = textField2.getText();
 		
 		button = new JButton("Finalize");
 		button.addActionListener(listener);
