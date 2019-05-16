@@ -1,5 +1,5 @@
 # CECS-277-Final-Project
-CECS Final Project: JM JC JT TN\
+CECS Final Project: JM JC JT TN
 
 To-Do:<br>
 Fully implement FrontDeskAgent/Guest classes<br>
