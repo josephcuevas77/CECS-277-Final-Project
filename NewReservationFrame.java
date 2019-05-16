@@ -31,7 +31,7 @@ public class NewReservationFrame extends JFrame {
 
 	private JButton cancelButton = new JButton("Cancel");
 	
-	private String[] guestInfo = {"Name", "Phone Number", "Address", "Date of Reservation", "Email", "Address", "Extra Info"};
+	private String[] guestInfo = {"Name", "Phone Number", "Address", "Date of Birth", "Email", "Extra Info"};
 	private String[] creditCard = {"Name", "Number", "Security Code", "Expiration Date"};
 	
 	public NewReservationFrame() {
@@ -61,14 +61,6 @@ public class NewReservationFrame extends JFrame {
 		checkBox = new JCheckBox("Contact via Email"); 
 		panel.add(checkBox);
 		checkBoxes.add(checkBox);
-		
-//		createComboBox(ConcreteRoomFactory.ROOMS, "Rooms: ", panel, comboBoxes);
-//		createComboBox(MealPlan.mealPlans, "Meal Plans: ", panel, comboBoxes);
-//		createComboBox(MealPlan.pizzaToppings, "Pizza Toppings: ", panel, comboBoxes);
-//		createComboBox(MealPlan.sodaBottles, "Soda Choices: ", panel, comboBoxes);
-//		createComboBox(MealPlan.iceCreamFlavors, "Ice Cream Flavors: ", panel, comboBoxes);
-//		createComboBox(MealPlan.wingFlavors, "Wing Flavors: ", panel, comboBoxes);
-
 
 		comboBox = new JComboBox<String>(ConcreteRoomFactory.ROOMS);
 		comboBoxes.add(comboBox);		
@@ -103,14 +95,6 @@ public class NewReservationFrame extends JFrame {
 		add(panel);
 	}
 	
-//	public JComboBox<String> createComboBox(String[] options, String title, JPanel panel, ArrayList<JComboBox<String>> comboList) {
-//		createLabel(title, panel);
-//		JComboBox<String> comboBox = new JComboBox<String>(options);
-//		comboList.add(comboBox);
-//		panel.add(comboBox);
-//		return comboBox;
-//	}
-	
 	public JLabel createLabel(String title, JPanel panel) {
 		JLabel label = new JLabel(title);
 		panel.add(label);
@@ -130,27 +114,14 @@ public class NewReservationFrame extends JFrame {
 	class SuperListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent event) {
-			//textFields[0-11]
-			//checkBoxes[0-1]
-			//comboList[0-5]
 			
 			//Save Button
 			if(event.getSource() == saveButton) {
-//				for(JTextField text: textFields) {
-//					System.out.println(text.getText());
-//				}
-//				for(JCheckBox box: checkBoxes) {
-//					System.out.println(box.isSelected());
-//				}
-//				for(JComboBox<String> combo: comboBoxes) {
-//					System.out.println(combo.getSelectedItem());
-//				}
-				
 				String[] dates = textFields.get(3).getText().split("/");
-				String creditCardInformation = textFields.get(7).getText() + "\n" + textFields.get(8).getText() + "\n" + textFields.get(9).getText() + "\n" + textFields.get(10).getText();
+				String creditCardInformation = textFields.get(6).getText() + "\n" + textFields.get(7).getText() + "\n" + textFields.get(8).getText() + "\n" + textFields.get(9).getText();
 				Date d = new Date(Integer.parseInt(dates[0]), Integer.parseInt(dates[1]), Integer.parseInt(dates[2]));
 				System.out.println(creditCardInformation);
-				Guest g = new Guest(textFields.get(0).getText(), textFields.get(1).getText(), textFields.get(2).getText(), creditCardInformation, d, textFields.get(5).getText(), (String)comboBoxes.get(1).getSelectedItem(), textFields.get(6).getText());
+				Guest g = new Guest(textFields.get(0).getText(), textFields.get(1).getText(), textFields.get(4).getText(), creditCardInformation, d, (String)comboBoxes.get(1).getSelectedItem(), textFields.get(5).getText());
 				System.out.println(g);
 				
 				MealPlan mp = new MealPlan(comboBoxes.get(1).getSelectedIndex());
