@@ -16,11 +16,6 @@ public class MainFrame extends JFrame {
 		new MainFrame().setVisible(true);
 	}
 	
-	/**
-	 * Description Menu, PartyRoomsSubMenu, LoungesSubMenu
-	 * Reservations Menu, NewRes, EditRes, LoungesSubMenu
-	 */
-	
 	private static final long serialVersionUID = 1L;
 	private static final int FRAME_WIDTH = 500;
 	private static final int FRAME_HEIGHT = 500;
@@ -34,7 +29,6 @@ public class MainFrame extends JFrame {
 	
 	private JMenuItem menuItem;
 	private JPanel panel = new JPanel();
-	private ArrayList<JMenuItem> menuItems = new ArrayList<JMenuItem>();
 	private String[] rooms = {"All", "Small Party Rooms", "Medium Party Rooms", "Aqua Room"};
 	private String[] lounges = {"All", "Karaoke Lounge", "Adult Billiards Lounge"};
 	private String[] meals = {"All", "Bronze", "etc."};
@@ -55,6 +49,15 @@ public class MainFrame extends JFrame {
 		descriptionMenu.add(partyRoomDescriptionSubMenu);
 		descriptionMenu.add(loungesDescriptionSubMenu);
 		
+
+		menuItem = new JMenuItem("Check-in");
+		menuItem.addActionListener(listener);
+		reservationsMenu.add(menuItem);
+		
+		menuItem = new JMenuItem("Check-out");
+		menuItem.addActionListener(listener);
+		reservationsMenu.add(menuItem);
+		
 		reservationsMenu.add(partyRoomReservationSubMenu);
 		reservationsMenu.add(loungesReservationSubMenu);
 		
@@ -68,6 +71,8 @@ public class MainFrame extends JFrame {
 			partyRoomReservationSubMenu.add(menuItem);
 		}
 		
+		
+		
 		for(String s: lounges) {
 			menuItem = new JMenuItem(s);
 			menuItem.addActionListener(listener);
@@ -78,61 +83,6 @@ public class MainFrame extends JFrame {
 			loungesReservationSubMenu.add(menuItem);
 		}
 		
-//		submenus.add(new JMenu("Party Rooms"));
-//		for (String s : rooms) {
-//			System.out.println(s);
-//			menuItem = new JMenuItem(s);
-//			menuItem.addActionListener(listener);
-//			submenus.get(0).add(menuItem);
-//			
-//		}
-//		menu.add(submenus.get(0));
-//		
-//		submenus.add(new JMenu("Lounges"));
-//		for (String s : lounges) {
-//			menuItem = new JMenuItem(s);
-//			menuItem.addActionListener(listener);
-//			submenus.get(1).add(menuItem);
-//		}
-//		menu.add(submenus.get(1));
-//		
-//		submenus.add(new JMenu("Meal Plans"));
-//		for (String s : meals) {
-//			menuItem = new JMenuItem(s);
-//			menuItem.addActionListener(listener);
-//			submenus.get(2).add(menuItem);
-//		}
-//		menu.add(submenus.get(1));
-//		
-//		menuBar.add(menu);
-//		
-//		menu = new JMenu("Reservations");
-//		
-//		menuItem = new JMenuItem("New Reservation");
-//		menuItem.addActionListener(listener);
-//		menuItems.add(menuItem);
-//		menu.add(menuItem);
-//		
-//		menuItem = new JMenuItem("Edit Reservation");
-//		menuItem.addActionListener(listener);
-//		menuItems.add(menuItem);
-//		menu.add(menuItem);
-//
-//		submenus.add(new JMenu("Manage Current Reservations"));
-//		menuItem = new JMenuItem("Check-in");
-//		menuItem.addActionListener(listener);
-//		menuItems.add(menuItem);
-//		submenus.get(1).add(menuItem);
-//		
-//		menuItem = new JMenuItem("Check-out");
-//		menuItem.addActionListener(listener);
-//		menuItems.add(menuItem);
-//		submenus.get(1).add(menuItem);
-//		
-//		menu.add(submenus.get(1));
-//		
-//		menuBar.add(menu);
-//
 		panel.add(mainMenuBar);
 		add(panel);
 		
@@ -153,6 +103,43 @@ public class MainFrame extends JFrame {
 			}
 			else if (event.getSource() == partyRoomDescriptionSubMenu.getItem(3)) {
 				System.out.println("Aqua World button from partyRoomDescriptionSubMenu");
+			}
+			if (event.getSource() == loungesDescriptionSubMenu.getItem(0)) {
+				System.out.println("All button from loungesDescriptionSubMenu");
+			}
+			else if (event.getSource() == loungesDescriptionSubMenu.getItem(1)) {
+				System.out.println("Karaoke Lounge button from loungesDescriptionSubMenu");
+			}
+			else if (event.getSource() == loungesDescriptionSubMenu.getItem(2)) {
+				System.out.println("Adult Billiards Lounge button from loungesDescriptionSubMenu");
+			}
+			if (event.getSource() == reservationsMenu.getItem(0)) {
+				System.out.println("Check-in from MainFrame");
+			}
+			else if (event.getSource() == reservationsMenu.getItem(1)) {
+				System.out.println("Check-out from MainFrame");
+			}
+			
+			if (event.getSource() == partyRoomReservationSubMenu.getItem(0)) {
+				System.out.println("All button from partyRoomReservationSubMenu");
+			}
+			else if (event.getSource() == partyRoomReservationSubMenu.getItem(1)) {
+				System.out.println("Small Party Rooms button from partyRoomReservationSubMenu");
+			}
+			else if (event.getSource() == partyRoomReservationSubMenu.getItem(2)) {
+				System.out.println("Medium Party Rooms button from partyRoomReservationSubMenu");
+			}
+			else if (event.getSource() == partyRoomReservationSubMenu.getItem(3)) {
+				System.out.println("Aqua World button from partyRoomReservationSubMenu");
+			}
+			if (event.getSource() == loungesReservationSubMenu.getItem(0)) {
+				System.out.println("All button from loungesReservationSubMenu");
+			}
+			else if (event.getSource() == loungesReservationSubMenu.getItem(1)) {
+				System.out.println("Karaoke Lounge button from loungesReservationSubMenu");
+			}
+			else if (event.getSource() == loungesReservationSubMenu.getItem(2)) {
+				System.out.println("Adult Billiards Lounge button from loungesReservationSubMenu");
 			}
 		}	
 	}
