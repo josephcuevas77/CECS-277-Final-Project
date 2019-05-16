@@ -20,15 +20,19 @@ public class FrontDeskAgent {
 	 * @return boolean of true if room is free and false if otherwise
 	 */
 	public boolean viewAvailability(Guest guest) {
-		System.out.print("\nEnter the Date of Reservation: MM/DD/YYYY: ");
-		String[] stringDate = in.nextLine().split("/");
+		System.out.print("Enter the Date of Reservation: MM/DD/YYYY: ");
+		String d = in.next();
+		String[] stringDate = d.split("/");
 		int[] date = new int[stringDate.length];
 		for(int i = 0; i < stringDate.length; i++) date[i] = Integer.parseInt(stringDate[i]);
 		guest.setDate(new Date(date[0], date[1], date[2]));
 		
 		for(Reservation i: reservations) {
-			return(guest.getDate().equals(i.getDate()));
+			if (guest.getDate().equals(i.getDate())) {
+				return true;
+			}
 		}
+		return false;
 	}
 	
 	/**
@@ -51,38 +55,48 @@ public class FrontDeskAgent {
 	 * updates the guest info
 	 * @param g - guest
 	 */
-	public void updateGuestInfo(Guest g) {
-		Scanner in = new Scanner(System.in);
-		for (Guest g : guests){
-		
-		}
-		
-		switch {
+	public void updateGuestInfo(Guest g) {		
+		System.out.print("What would u like to change? \n1. Name\n2. Phone Number\n3. Email\n4. Credit Card Info"
+				+ "\n5. Date\n6. Time\n7. MealPlan\n8. Extra Info\nOption: ");
+		int choice = in.nextInt();
+		System.out.println();
+		switch (choice) {
 			case(1):
-				g.setName(in.next);
+				System.out.print("Change Name: ");
+				g.setName(in.next());
 				break;
 			case(2):
-				g.setPhoneNumber(in.next);
+				System.out.print("Change Phone Number: ");
+				g.setPhoneNumber(in.next());
 				break;
 			case(3):
-				g.setEmail(in.next);
+				System.out.print("Change Email: ");
+				g.setEmail(in.next());
 				break;
 			case(4):
-				g.setCreditCardInfo(in.next);
+				System.out.print("Change Credit Card Info: ");
+				g.setCreditCardInfo(in.next());
 				break;
 			case(5):
-				g.setDate(Date date);
+				System.out.print("Enter the Date of Reservation in MM/DD/YYYY: ");
+				String d = in.next();
+				String[] stringDate = d.split("/");
+				int[] date = new int[stringDate.length];
+				for(int i = 0; i < stringDate.length; i++) date[i] = Integer.parseInt(stringDate[i]);
+				g.setDate(new Date(date[0], date[1], date[2]));
 				break;
 			case(6):
-				g.setTime(in.next);
+				System.out.print("Change Time: ");
+				g.setTime(in.next());
 				break;
 			case(7):
-				g.setMealPlanInfo(in.next);
+				System.out.print("Change MealPlan: ");
+				g.setMealPlanInfo(in.next());
 				break;
 			case(8):
-				g.setExtraInfo(in.next);
+				System.out.print("Change Extra Info: ");
+				g.setExtraInfo(in.next());
 				break;
-
 		}
 	}
 	
@@ -93,7 +107,7 @@ public class FrontDeskAgent {
 	 */
 	public boolean isReserved(Date d) {
 		for (Reservation r : getReservations()) {
-			if (r.getDate() == d) {
+			if (r.getDate().equals(d)) {
 				return true;
 			}
 		}
@@ -103,20 +117,19 @@ public class FrontDeskAgent {
 	/**
 	 * Collects money from customer
 	 */
-	public void collectAmountDue() {
-		
-	}
-	
-	/**
-	 * edits the info of guest
-	 */
-	public void editGuestInfo() {
-		
-	}
-	
-	
-	public static void main(String[] args) {
-
+	public void collectAmountDue(Reservation r) {
+		BaseRoom room = r.getBaseRoom();
+		Guest g = r.getGuest();
+		double cost = room.getFinalCost();
+		System.out.println("Amount Due: $" + cost);
+		double payment = in.nextDouble();
+		while (payment < cost) {
+			System.out.println("Amount Due: $" + cost);
+			payment += in.nextDouble();
+		}
+		if (payment >= cost) {
+			System.out.println("Good");
+		}
 	}
 
 	/**
@@ -126,5 +139,16 @@ public class FrontDeskAgent {
 	public static ArrayList<Reservation> getReservations() {
 		return reservations;
 	}
+	
+	public static void main(String[] args) {
+		FrontDeskAgent f = new FrontDeskAgent();
+		Guest g = new Guest();
+		while (true) {
+		f.updateGuestInfo(g);
+		System.out.println();
+		System.out.println(g.toString());
+		}
+	}
+
 
 }
