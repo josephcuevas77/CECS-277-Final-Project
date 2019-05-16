@@ -12,7 +12,7 @@ public class FrontDeskAgent {
 	private static double totalMoneyHas = 0;
 	private static ConcreteRoomFactory factory = new ConcreteRoomFactory();
 	private static ArrayList<Guest> guests = new ArrayList<Guest>();
-	public static ArrayList<Reservation> reservations = new ArrayList<Reservation>();
+	private static ArrayList<Reservation> reservations = new ArrayList<Reservation>();
 	private static ArrayList<Reservation> waitlist = new ArrayList<Reservation>();
 
 	private static ArrayList<BaseRoom> AquaWorldRooms = new ArrayList<BaseRoom>();
@@ -179,7 +179,6 @@ public class FrontDeskAgent {
 		g.setEmail(email);
 		g.setCreditCardInfo(creditCardInfo);
 		g.setDate(date);
-		g.setTime(time);
 		g.setMealPlanInfo(mealPlanInfo);
 		g.setExtraInfo(extraInfo);
 	}

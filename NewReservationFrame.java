@@ -27,12 +27,12 @@ public class NewReservationFrame extends JFrame {
 	private ArrayList<JComboBox<String>> comboBoxes = new ArrayList<JComboBox<String>>();
 	
 
-	private JButton saveButton = new JButton("Save");
+	private JButton saveButton = new JButton("Book Now");
 
 	private JButton cancelButton = new JButton("Cancel");
 	
-	private String[] guestInfo = {"Name", "Phone Number", "Address", "Date of Birth", "Email", "Extra Info"};
-	private String[] creditCard = {"Name", "Number", "Security Code", "Expiration Date"};
+	private String[] guestInfo = {"Name", "Date of Birth","Phone Number", "Address", "Date of Reservation", "Time of Reservation", "Email", "Extra Info"};
+	private String[] creditCard = {"Name", "Number", "Security Code", "Expiration Date", "Initial Payment"};
 	
 	public NewReservationFrame() {
 		createComponents();
@@ -117,16 +117,43 @@ public class NewReservationFrame extends JFrame {
 			
 			//Save Button
 			if(event.getSource() == saveButton) {
-				String[] dates = textFields.get(3).getText().split("/");
-				String creditCardInformation = textFields.get(6).getText() + "\n" + textFields.get(7).getText() + "\n" + textFields.get(8).getText() + "\n" + textFields.get(9).getText();
-				Date d = new Date(Integer.parseInt(dates[0]), Integer.parseInt(dates[1]), Integer.parseInt(dates[2]));
+				
+				
+				String[] dateOfBirth = textFields.get(1).getText().split("/");
+				Date dob;
+				try {
+					dob = new Date(Integer.parseInt(dateOfBirth[0]), Integer.parseInt(dateOfBirth[1]), Integer.parseInt(dateOfBirth[2]));
+					if(dob.getYear() >= 1999 && comboBoxes.get(0).getSelectedIndex() == 4) {
+						System.out.println("Too young.");
+						dispose();
+					}
+				}
+				catch (Exception e) {
+					dob = new Date();
+				}
+				String[] dateOfReservation = textFields.get(4).getText().split("/");
+				String creditCardInformation = textFields.get(8).getText() + "\n" + textFields.get(8).getText() + "\n" + textFields.get(9).getText() + "\n" + textFields.get(10).getText();
+				Date dor;
+				try {
+					dor = new Date(Integer.parseInt(dateOfReservation[0]), Integer.parseInt(dateOfReservation[1]), Integer.parseInt(dateOfReservation[2]));
+				}
+				catch (Exception e) {
+					dor = new Date();
+				}
 				System.out.println(creditCardInformation);
-				Guest g = new Guest(textFields.get(0).getText(), textFields.get(1).getText(), textFields.get(4).getText(), creditCardInformation, d, (String)comboBoxes.get(1).getSelectedItem(), textFields.get(5).getText());
+				Guest g = new Guest(textFields.get(0).getText(), dob,textFields.get(2).getText(), textFields.get(6).getText(), creditCardInformation, dor, textFields.get(5).getText(), (String)comboBoxes.get(1).getSelectedItem(), textFields.get(8).getText());
 				System.out.println(g);
 				
 				MealPlan mp = new MealPlan(comboBoxes.get(1).getSelectedIndex());
 				
 				FrontDeskAgent.addReservation(g, comboBoxes.get(0).getSelectedIndex(), mp);
+				try {
+					FrontDeskAgent.getReservations().get(FrontDeskAgent.getReservations().size()-1).getBaseRoom().updateCostOfAddOns(Double.parseDouble(textFields.get(12).getText())*-1);
+					System.out.println(FrontDeskAgent.getReservations().get(FrontDeskAgent.getReservations().size()-1).getBaseRoom());
+				} catch (Exception e) {
+					System.out.println("Did not work!");
+				}
+				dispose();
 				cancelButton.setText("Close");
 			}
 			

@@ -11,6 +11,7 @@ public class Guest {
 	 * instance variables
 	 */
 	private String name;
+	private Date dateOfBirth;
 	private String phoneNumber;
 	private String email;
 	private String creditCardInfo;
@@ -25,6 +26,7 @@ public class Guest {
 	 */
 	public Guest() {
 		name = "N/A";
+		dateOfBirth = new Date();
 		phoneNumber = "N/A";
 		email = "N/A";
 		creditCardInfo = "N/A";
@@ -46,12 +48,14 @@ public class Guest {
 	 * @param MPI meal plan information
 	 * @param EI any extra information
 	 */
-	public Guest(String name, String pN, String email,String CCI,Date date, String MPI, String EI) {
+	public Guest(String name, Date dateOfBirth, String pN, String email,String CCI,Date date, String time, String MPI, String EI) {
 		this.name = name;
+		this.dateOfBirth = dateOfBirth;
 		this.phoneNumber = pN;
 		this.email = email;
 		this.creditCardInfo = CCI;
 		this.date = date;
+		this.time = time;
 		this.mealPlanInfo = MPI;
 		this.extraInfo = EI;
 		isCheckedIn = false;
@@ -71,6 +75,14 @@ public class Guest {
 	 */
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+	
+	public void setDateOfBirth(Date d) {
+		dateOfBirth = d;
 	}
 	
 	/**
@@ -103,6 +115,14 @@ public class Guest {
 	 */
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getTimeOfReservation() {
+		return time;
+	}
+	
+	public void setTimeOfReservation(String t) {
+		time = t;
 	}
 	
 	/**
@@ -182,7 +202,7 @@ public class Guest {
 	 */
 	public String toString() {
 		return "Guest: \nName: " + name + "\nPhone Number: " + phoneNumber + "\nEmail: " + email + "\nCredit Card Info: "
-				+ creditCardInfo + "\nDate: " + date + "\nTime: " + time + "\nMeal Plan Info: " + mealPlanInfo
+				+ creditCardInfo + "\nDate of reservation: " + date + "\nTime of Reservation: "+ time+ "\nMeal Plan Info: " + mealPlanInfo
 				+ "\nExtra Info: " + extraInfo + "\n";
 	}	
 	

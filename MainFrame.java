@@ -50,6 +50,10 @@ public class MainFrame extends JFrame {
 		menuItem = new JMenuItem("Edit Reservation");
 		menuItem.addActionListener(listener);
 		reservationsMenu.add(menuItem);
+		menuItem = new JMenuItem("Edit Date of Reservation");
+		menuItem.addActionListener(listener);
+		reservationsMenu.add(menuItem);
+		
 
 		menuItem = new JMenuItem("Check-in");
 		menuItem.addActionListener(listener);
@@ -199,9 +203,14 @@ public class MainFrame extends JFrame {
 			//Edit
 			else if (event.getSource() == reservationsMenu.getItem(1)) {
 				System.out.println("Edit Reservation");
-//				EditReservationFrame f = new EditReservationFrame();
-//				f.setVisible(true);
-				for(Reservation r: FrontDeskAgent.reservations) System.out.println(r);
+				EditReservationFrame f = new EditReservationFrame();
+				f.setVisible(true);
+//				for(Reservation r: FrontDeskAgent.reservations) System.out.println(r);
+			}
+			else if(event.getSource() == reservationsMenu.getItem(2)) {
+				System.out.println("Edit date of reservation");
+				EditDateReservationFrame f = new EditDateReservationFrame();
+				f.setVisible(true);
 			}
 		}	
 	}
