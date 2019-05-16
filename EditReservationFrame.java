@@ -33,7 +33,7 @@ public class EditReservationFrame extends JFrame {
 				for (Guest g : FrontDeskAgent.getGuests()) {
 					if(confirmNumOrGN.contentEquals(g.getName())){
 						panel2.add(new JLabel("Guest Information: "));
-						createLabel(g.toString(),panel2);
+						createJTextArea(g.toString(),panel2);
 						createButtonIntoPanel("Delete Reservation",panel2);
 						panel2.setVisible(true);
 					}
@@ -41,9 +41,10 @@ public class EditReservationFrame extends JFrame {
 				for(Reservation r: FrontDeskAgent.getWaitList()) {
 					if(confirmNumOrGN.equals(Integer.toString(r.getConfirmNum()))){
 						panel2.add(new JLabel("Guest Information: "));
-						createLabel(r.getGuest().toString(),panel2);
+						createJTextArea(r.getGuest().toString(),panel2);
 						createButtonIntoPanel("Delete Reservation",panel2);
 						panel2.setVisible(true);
+						
 					}
 				}
 			}
@@ -52,6 +53,7 @@ public class EditReservationFrame extends JFrame {
 					for(Reservation r: FrontDeskAgent.getWaitList()) {
 						if(g.getDate().equals(r.getGuest().getDate()) && g.getTime().equals(r.getGuest().getTime())) {
 							createNotifyGuestFrame(r.getGuest());
+							FrontDeskAgent.getGuests().remove(g);
 						}
 					}
 				}
@@ -75,16 +77,22 @@ public class EditReservationFrame extends JFrame {
 		panel2.setVisible(false);
 		add(panel);
 	}
+	
+	public void createJTextArea(String tArea,JPanel panel){
+		JTextArea tA = new JTextArea();
+		tA.setText(tArea);
+		panel.add(tA);
+	}
 
 	public void createNotifyGuestFrame(Guest g) {
 		JFrame notifyGuest = new JFrame();
 		JPanel panel = new JPanel();
-		createLabel("Now notifying waitlisted guest " + g.getName() + " of confirmed reservation", panel);
+		createLabel("Now notifying waitlisted guest " + g.getName() + " of confirmed reservation...", panel);
 		notifyGuest.setTitle("Notify Waitlist Guest");
-		notifyGuest.setSize(FRAME_WIDTH,FRAME_HEIGHT);
+		notifyGuest.setSize(500,200);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		notifyGuest.add(panel);
-		setVisible(true);
+		notifyGuest.setVisible(true);
 	}
 
 	public void createLabelAndTextField(String lab, JPanel panel) {
