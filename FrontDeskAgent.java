@@ -12,7 +12,7 @@ public class FrontDeskAgent {
 	private Scanner in = new Scanner(System.in);
 	
 	private ArrayList<Guest> guests = new ArrayList<Guest>();
-	private static ArrayList<Reservation> reservations = new ArrayList<Reservation>();
+	private ArrayList<Reservation> reservations = new ArrayList<Reservation>();
 	private ArrayList<Reservation> waitlist = new ArrayList<Reservation>();
 
 	/**
@@ -49,6 +49,14 @@ public class FrontDeskAgent {
 	 */
 	public void removeFromWaitlist(Reservation r) {
 		waitlist.remove(r);
+	}
+	
+	public void addReservation(Reservation r) {
+		reservations.add(r);
+	}
+	
+	public void removeReservation(Reservation r) {
+		reservations.remove(r);
 	}
 	
 	/**
@@ -136,7 +144,7 @@ public class FrontDeskAgent {
 	 * Gets the list of reservations
 	 * @return
 	 */
-	public static ArrayList<Reservation> getReservations() {
+	public ArrayList<Reservation> getReservations() {
 		return reservations;
 	}
 	
