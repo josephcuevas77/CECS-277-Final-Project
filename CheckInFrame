@@ -16,7 +16,7 @@ public class CheckInFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private JButton button;
-	private JList<Guest> list;
+	private JList list;
 	private JLabel label;
 	private JTextField textField;
 	private ArrayList<JButton> buttons = new ArrayList<JButton>();
@@ -45,7 +45,7 @@ public class CheckInFrame extends JFrame {
 		pan.add(button);
 		panel.add(pan);
 		
-		list = new JList<Guest>();
+		list = new JList();
 		list.setVisible(false);
 		panel.add(list);
 		
@@ -66,6 +66,7 @@ public class CheckInFrame extends JFrame {
 
 		public void actionPerformed(ActionEvent event) {
 			if (event.getSource() == buttons.get(0)) {
+				System.out.println("DASDFASDF");
 				try {
 					String[] stringDate = textField.getText().split("/");
 					int[] date = new int[stringDate.length];
@@ -77,7 +78,7 @@ public class CheckInFrame extends JFrame {
 							guests.add(r.getGuest());
 						}
 					}
-					list.setListData((Guest[]) guests.toArray());
+					list.setListData(guests.toArray());
 				}
 				catch(Exception e) {}
 				
