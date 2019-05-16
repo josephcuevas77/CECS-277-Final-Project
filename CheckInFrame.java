@@ -86,7 +86,7 @@ public class CheckInFrame extends JFrame {
 			}
 			if (event.getSource() == buttons.get(1)) {
 				Guest g = guests.get(list.getSelectedIndex());
-				g.checkIn();
+				FrontDeskAgent.checkIn(g);
 				System.out.println(g);
 				//FrontDeskAgent.checkIn(g);
 			}

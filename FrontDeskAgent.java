@@ -94,19 +94,27 @@ public class FrontDeskAgent {
 		waitlist.remove(r);
 	}
 	
+	public static void checkIn(Guest g) {
+		g.setCheckInStates(true);
+	}
+	
+	public static void checkOut(Guest g) {
+		g.setCheckInStates(false);	
+}
+	
 	public static void addReservation(Guest g, int num) {
 		Reservation r = new Reservation();
 		switch(num) {
 		case 0:
 			r.setBaseRoom(AquaWorldRooms.get(0));
 		case 1:
-			r.setBaseRoom(SmallPartyRooms.get(1));
+			r.setBaseRoom(SmallPartyRooms.get(0));
 		case 2:
-			r.setBaseRoom(MediumPartyRooms.get(2));
+			r.setBaseRoom(MediumPartyRooms.get(0));
 		case 3:
-			r.setBaseRoom(KaraokeLounges.get(3));
+			r.setBaseRoom(KaraokeLounges.get(0));
 		case 4:
-			r.setBaseRoom(AdultBilliardsLounges.get(4));
+			r.setBaseRoom(AdultBilliardsLounges.get(0));
 		}
 		r.setDate(g.getDate());
 		reservations.add(r);

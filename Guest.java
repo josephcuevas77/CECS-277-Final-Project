@@ -5,7 +5,7 @@ package FinalExam;
  * inherits the GuestDecorator class
  * hold the guests info that is reserving the room
  */
-public class Guest extends GuestDecorator {
+public class Guest {
 	
 	/**
 	 * instance variables
@@ -189,13 +189,8 @@ public class Guest extends GuestDecorator {
 	public boolean getCheckInStatus() {
 		return isCheckedIn;	
 	}
-
-	public void checkIn() {
-		isCheckedIn = true;	
-	}
-	
-	public void checkOut() {
-		isCheckedIn = false;	
+	public void setCheckInStates(boolean b) {
+		isCheckedIn = b;
 	}
 	
 	/**
@@ -208,20 +203,4 @@ public class Guest extends GuestDecorator {
 				+ "\nExtra Info: " + extraInfo + "\n";
 	}	
 	
-	/**
-	 * tester
-	 */
-	public static void main(String[] args) {
-		Date date = new Date(6,1,1999);
-		Guest guest = new Guest();
-		Guest guest1 = new Guest("Joseph Cuevas", "(714) 714-7147", "joseph@gmail.com", "AMEX 0000 XXXX", date, "12:00", "Deluxe Meal Plan", "extraInfo" );
-		System.out.println(guest);
-		System.out.println(guest1);
-		
-		guest1.checkIn();
-		guest1.checkOut();
-		enterGuestInfo(guest);
-		System.out.println(guest);
-		
-	}
 }
