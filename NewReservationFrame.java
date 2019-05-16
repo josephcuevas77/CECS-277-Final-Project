@@ -30,7 +30,7 @@ public class NewReservationFrame extends JFrame {
 
 	private JButton cancelButton = new JButton("Cancel");
 	
-	private String[] guestInfo = {"Name", "Phone Number", "Address", "Date of Birth", "Email", "Address"};
+	private String[] guestInfo = {"Name", "Phone Number", "Address", "Date of Reservation", "Email", "Address", "Extra Info"};
 	private String[] creditCard = {"Name", "Number", "Security Code", "Expiration Date"};
 	
 	public NewReservationFrame() {
@@ -133,22 +133,34 @@ public class NewReservationFrame extends JFrame {
 			//checkBoxes[0-1]
 			//comboList[0-5]
 			
-			
 			//Save Button
 			if(event.getSource() == saveButton) {
-				for(JTextField text: textFields) {
-					System.out.println(text.getText());
-				}
-				for(JCheckBox box: checkBoxes) {
-					System.out.println(box.isSelected());
-				}
-				for(JComboBox<String> combo: comboBoxes) {
-					System.out.println(combo.getSelectedItem());
-				}
+//				for(JTextField text: textFields) {
+//					System.out.println(text.getText());
+//				}
+//				for(JCheckBox box: checkBoxes) {
+//					System.out.println(box.isSelected());
+//				}
+//				for(JComboBox<String> combo: comboBoxes) {
+//					System.out.println(combo.getSelectedItem());
+//				}
+				
+				String[] dates = textFields.get(3).getText().split("/");
+				String creditCardInformation = textFields.get(7).getText() + "\n" + textFields.get(8).getText() + "\n" + textFields.get(9).getText() + "\n" + textFields.get(10).getText();
+				Date d = new Date(Integer.parseInt(dates[0]), Integer.parseInt(dates[1]), Integer.parseInt(dates[2]));
+				System.out.println(creditCardInformation);
+				Guest g = new Guest(textFields.get(0).getText(), textFields.get(1).getText(), textFields.get(2).getText(), creditCardInformation, d, textFields.get(5).getText(), (String)comboBoxes.get(0).getSelectedItem(), textFields.get(6).getText());
+				System.out.println(g);
+				
+				Reservation r = new Reservation();
+
+//				FrontDeskAgent.addReservation(r);
 			}
+			
+			
 			//Cancel Button
 			else if(event.getSource() == cancelButton) {
-				System.out.println("Cancel Button clicked!");
+				dispose();
 			}
 			
 		}
