@@ -138,22 +138,6 @@ public class Guest {
 	}
 	
 	/**
-	 * gets the time the room was reserved
-	 * @return time the room was reserved
-	 */
-	public String getTime() {
-		return time;
-	}
-	
-	/**
-	 * sets the time
-	 * @param time
-	 */
-	public void setTime(String time) {
-		this.time = time;
-	}
-	
-	/**
 	 * gets the meal plan info
 	 * @return meal plan info
 	 */
