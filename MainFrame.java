@@ -29,6 +29,7 @@ public class MainFrame extends JFrame {
 	
 	public MainFrame() {
 		createComponents();
+		FrontDeskAgent.generateAllRooms();
 		setSize(FRAME_WIDTH, FRAME_HEIGHT);
 		setTitle("Main Menu");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -179,31 +180,28 @@ public class MainFrame extends JFrame {
 			//Check-in from MainFrame
 			if (event.getSource() == manageReservationSubMenu.getItem(0)) {
 				System.out.println("Check-in from MainFrame");
-				JFrame frame = new CheckInFrame();
-				frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				frame.setVisible(true);
+				CheckInFrame f = new CheckInFrame();
+				f.setVisible(true);
 			}
 			//Check-out from MainFrame
 			else if (event.getSource() == manageReservationSubMenu.getItem(1)) {
 				System.out.println("Check-out from MainFrame");
-				JFrame frame = new CheckOutFrame();
-				frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				frame.setVisible(true);
+				CheckOutFrame f = new CheckOutFrame();
+				f.setVisible(true);
 			}
 			
-			//All button from partyRoomReservationSubMenu
+			//New Reservation
 			if (event.getSource() == reservationsMenu.getItem(0)) {
 				System.out.println("New Reservation");
-				JFrame frame = new NewReservationFrame();
-				frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				frame.setVisible(true);
+				NewReservationFrame f = new NewReservationFrame();
+				f.setVisible(true);
 			}
-			//Small Party Rooms button from partyRoomReservationSubMenu
+			//Edit
 			else if (event.getSource() == reservationsMenu.getItem(1)) {
 				System.out.println("Edit Reservation");
-				JFrame frame = new EditReservationFrame();
-				frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				frame.setVisible(true);
+//				EditReservationFrame f = new EditReservationFrame();
+//				f.setVisible(true);
+				for(Reservation r: FrontDeskAgent.reservations) System.out.println(r);
 			}
 		}	
 	}

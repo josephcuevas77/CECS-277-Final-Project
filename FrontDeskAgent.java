@@ -9,9 +9,10 @@ import java.util.Scanner;
  */
 public class FrontDeskAgent {
 	
+	private static double totalMoneyHas = 0;
 	private static ConcreteRoomFactory factory = new ConcreteRoomFactory();
 	private static ArrayList<Guest> guests = new ArrayList<Guest>();
-	private static ArrayList<Reservation> reservations = new ArrayList<Reservation>();
+	public static ArrayList<Reservation> reservations = new ArrayList<Reservation>();
 	private static ArrayList<Reservation> waitlist = new ArrayList<Reservation>();
 
 	private static ArrayList<BaseRoom> AquaWorldRooms = new ArrayList<BaseRoom>();
@@ -102,7 +103,7 @@ public class FrontDeskAgent {
 		g.setCheckInStates(false);	
 }
 	
-	public static void addReservation(Guest g, int num) {
+	public static void addReservation(Guest g, int num, MealPlan mp) {
 		Reservation r = new Reservation();
 		switch(num) {
 		case 0:
@@ -116,7 +117,9 @@ public class FrontDeskAgent {
 		case 4:
 			r.setBaseRoom(AdultBilliardsLounges.get(0));
 		}
+		r.setGuest(g);
 		r.setDate(g.getDate());
+		r.getBaseRoom().setMealPlan(mp);
 		reservations.add(r);
 	}
 	
@@ -205,6 +208,7 @@ public class FrontDeskAgent {
 //		System.out.println("Amount Due: $" + cost);
 //		double payment = in.nextDouble();
 		if(amount >= cost) {
+			totalMoneyHas += amount;
 			return true;
 		}
 		return false;

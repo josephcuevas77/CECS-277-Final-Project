@@ -150,10 +150,12 @@ public class NewReservationFrame extends JFrame {
 				String creditCardInformation = textFields.get(7).getText() + "\n" + textFields.get(8).getText() + "\n" + textFields.get(9).getText() + "\n" + textFields.get(10).getText();
 				Date d = new Date(Integer.parseInt(dates[0]), Integer.parseInt(dates[1]), Integer.parseInt(dates[2]));
 				System.out.println(creditCardInformation);
-				Guest g = new Guest(textFields.get(0).getText(), textFields.get(1).getText(), textFields.get(2).getText(), creditCardInformation, d, textFields.get(5).getText(), (String)comboBoxes.get(0).getSelectedItem(), textFields.get(6).getText());
+				Guest g = new Guest(textFields.get(0).getText(), textFields.get(1).getText(), textFields.get(2).getText(), creditCardInformation, d, textFields.get(5).getText(), (String)comboBoxes.get(1).getSelectedItem(), textFields.get(6).getText());
 				System.out.println(g);
-
-				FrontDeskAgent.addReservation(g, comboBoxes.get(0).getSelectedIndex());
+				
+				MealPlan mp = new MealPlan(comboBoxes.get(1).getSelectedIndex());
+				
+				FrontDeskAgent.addReservation(g, comboBoxes.get(0).getSelectedIndex(), mp);
 				cancelButton.setText("Close");
 			}
 			

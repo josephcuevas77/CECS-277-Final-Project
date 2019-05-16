@@ -13,6 +13,11 @@ import javax.swing.JTextField;
 
 public class CheckInFrame extends JFrame {
 
+	public static void main(String[] args) {
+		CheckInFrame f = new CheckInFrame();
+		f.setVisible(true);
+	}
+	
 	private static final long serialVersionUID = 1L;
 
 	private JButton button;
