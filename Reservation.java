@@ -37,6 +37,10 @@ public class Reservation {
 		this.isFinalized = isF;
 	}
 	
+	public Guest getGuest() {
+		return guest;
+	}
+	
 	/**
 	 * gets base room
 	 * @return base room
@@ -83,18 +87,5 @@ public class Reservation {
 	public String toString() {
 		String reserve = "Reservation:\nRoom: " + baseRoom + "\nDate: " + date + "\n" + guest + "Finalized?: " + isFinalized + "\n";
 		return reserve;
-	}
-	
-	/**
-	 * Tester
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		BaseRoom BaseRoom = new BaseRoom();
-		Date date = new Date(5,7,2019);
-		Guest guest1 = new Guest("Joseph Cuevas", "(714) 714-7147", "joseph@gmail.com", "AMEX 0000 XXXX", date, "12:00", "Deluxe Meal Plan", "extraInfo" );
-		System.out.println(new Reservation());
-		Reservation r = new Reservation(BaseRoom,date,guest1,true);
-		System.out.println(r);
 	}
 }

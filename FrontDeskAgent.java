@@ -197,10 +197,8 @@ public class FrontDeskAgent {
 	}
 	
 	public static void main(String[] args) {
-		FrontDeskAgent f = new FrontDeskAgent();
 		Guest g = new Guest();
 		while (true) {
-		f.updateGuestInfo(g);
 		System.out.println();
 		System.out.println(g.toString());
 		}
