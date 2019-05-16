@@ -1,0 +1,32 @@
+package FinalExam;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class CheckInFrame extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+
+	private JButton button;
+	private JPanel panel = new JPanel();
+	private static final int FRAME_WIDTH = 400;
+	private static final int FRAME_HEIGHT = 700;
+	
+	CheckInFrame() {
+		createComponents();
+		setSize(FRAME_WIDTH, FRAME_HEIGHT);
+		setTitle("Check-in Frame");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
+	
+	public void createComponents() {
+		button = new JButton("Check-in");
+		panel.add(button);
+		
+		button = new JButton("Cancel");
+		panel.add(button);
+		
+		add(panel);
+	}
+}
