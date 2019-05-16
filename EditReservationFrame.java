@@ -78,7 +78,9 @@ public class EditReservationFrame extends JFrame {
 		JPanel panel = new JPanel();
 		createLabel("Now notifying waitlisted guest " + g.getName() + " of confirmed reservation", panel);
 		notifyGuest.setTitle("Notify Waitlist Guest");
+		notifyGuest.setSize(FRAME_WIDTH,FRAME_HEIGHT);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		notifyGuest.add(panel);
 		setVisible(true);
 	}
 	
