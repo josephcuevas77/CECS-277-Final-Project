@@ -82,7 +82,7 @@ public class FrontDeskAgent {
 	 * Adds reservation to waitlist if full
 	 * @param r - reservation to be added
 	 */
-	public static void addToWaitlist(Reservation r) {
+	public void addToWaitlist(Reservation r) {
 		waitlist.add(r);
 	}
 	
@@ -90,15 +90,15 @@ public class FrontDeskAgent {
 	 * Removes reservation from waitlist
 	 * @param r - reservation
 	 */
-	public static void removeFromWaitlist(Reservation r) {
+	public void removeFromWaitlist(Reservation r) {
 		waitlist.remove(r);
 	}
 	
-	public static void addReservation(Reservation r) {
+	public void addReservation(Reservation r) {
 		reservations.add(r);
 	}
 	
-	public static void removeReservation(Reservation r) {
+	public void removeReservation(Reservation r) {
 		reservations.remove(r);
 	}
 	
@@ -106,7 +106,7 @@ public class FrontDeskAgent {
 	 * updates the guest info
 	 * @param g - guest
 	 */
-	public static void updateGuestInfo(Guest g, String name, String phoneNumber, String email, String creditCardInfo, Date date, String time, String mealPlanInfo, String extraInfo) {		
+	public void updateGuestInfo(Guest g, String name, String phoneNumber, String email, String creditCardInfo, Date date, String time, String mealPlanInfo, String extraInfo) {		
 //		System.out.print("What would u like to change? \n1. Name\n2. Phone Number\n3. Email\n4. Credit Card Info"
 //				+ "\n5. Date\n6. Time\n7. MealPlan\n8. Extra Info\nOption: ");
 //		int choice = in.nextInt();
@@ -164,7 +164,7 @@ public class FrontDeskAgent {
 	 * @param d - date of reservation
 	 * @return true if reserved and false otherwise
 	 */
-	public static boolean isReserved(Date d) {
+	public boolean isReserved(Date d) {
 		for (Reservation r : getReservations()) {
 			if (r.getDate().equals(d)) {
 				return true;
@@ -176,7 +176,7 @@ public class FrontDeskAgent {
 	/**
 	 * Collects money from customer
 	 */
-	public static boolean collectAmountDue(Reservation r, int amount) {
+	public boolean collectAmountDue(Reservation r, int amount) {
 		BaseRoom room = r.getBaseRoom();
 		Guest g = r.getGuest();
 		double cost = room.getFinalCost();
@@ -196,9 +196,13 @@ public class FrontDeskAgent {
 		return reservations;
 	}
 	
+	public static boolean checkConfirmNum(Reservation r, int cNum) { return(r.getConfirmNum() == cNum); }
+	
 	public static void main(String[] args) {
+		FrontDeskAgent f = new FrontDeskAgent();
 		Guest g = new Guest();
 		while (true) {
+		f.updateGuestInfo(g);
 		System.out.println();
 		System.out.println(g.toString());
 		}
