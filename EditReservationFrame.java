@@ -68,9 +68,9 @@ public class EditReservationFrame extends JFrame {
 		ActionListener listener = new ClickListener();
 		JPanel panel = new JPanel();
 		createLabelAndTextField("Enter Confirmation Number/Guest Name: ",panel);
-		add(panel);
-		add(panel2);
+		panel.add(panel2);
 		panel2.setVisible(false);
+		add(panel);
 	}
 	
 	public void createNotifyGuestFrame(Guest g) {
