@@ -74,7 +74,7 @@ public class EditReservationFrame extends JFrame {
 			if(event.getSource() == buttons.get(1)) {
 				for (Guest g : FrontDeskAgent.getGuests()) {
 					for(Reservation r: FrontDeskAgent.getWaitList()) {
-						if(g.getDate().equals(r.getGuest().getDate()) && g.getTime().equals(r.getGuest().getTime())) {
+						if(g.getDate().equals(r.getGuest().getDate())){
 							createNotifyGuestFrame(r.getGuest());
 							FrontDeskAgent.getGuests().remove(g);
 						}
