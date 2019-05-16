@@ -46,13 +46,12 @@ public class Guest {
 	 * @param MPI meal plan information
 	 * @param EI any extra information
 	 */
-	public Guest(String name, String pN, String email,String CCI,Date date, String time, String MPI, String EI) {
+	public Guest(String name, String pN, String email,String CCI,Date date, String MPI, String EI) {
 		this.name = name;
 		this.phoneNumber = pN;
 		this.email = email;
 		this.creditCardInfo = CCI;
 		this.date = date;
-		this.time = time;
 		this.mealPlanInfo = MPI;
 		this.extraInfo = EI;
 		isCheckedIn = false;
