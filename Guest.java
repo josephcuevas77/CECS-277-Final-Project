@@ -5,7 +5,7 @@ package FinalExam;
  * inherits the GuestDecorator class
  * hold the guests info that is reserving the room
  */
-public class Guest extends GuestDecorator {
+public class Guest {
 	
 	/**
 	 * instance variables
@@ -18,7 +18,6 @@ public class Guest extends GuestDecorator {
 	private String time;
 	private String mealPlanInfo;
 	private String extraInfo;
-	private boolean isCheckedIn;
 	
 	/**
 	 * default constructor
@@ -32,7 +31,7 @@ public class Guest extends GuestDecorator {
 		time = "N/A";
 		mealPlanInfo = "N/A";
 		extraInfo = "N/A";
-		isCheckedIn = false;
+		FrontDeskAgent.getGuests().add(this);
 	}
 	
 	/**
@@ -55,7 +54,7 @@ public class Guest extends GuestDecorator {
 		this.time = time;
 		this.mealPlanInfo = MPI;
 		this.extraInfo = EI;
-		isCheckedIn = false;
+		FrontDeskAgent.getGuests().add(this);
 	}
 	
 	/**
@@ -185,19 +184,7 @@ public class Guest extends GuestDecorator {
 	public void setExtraInfo(String extraInfo) {
 		this.extraInfo = extraInfo;
 	}
-	
-	public boolean getCheckInStatus() {
-		return isCheckedIn;	
-	}
 
-	public void checkIn() {
-		isCheckedIn = true;	
-	}
-	
-	public void checkOut() {
-		isCheckedIn = false;	
-	}
-	
 	/**
 	 * toString that formats the guest info
 	 * @return the guest info
@@ -217,11 +204,6 @@ public class Guest extends GuestDecorator {
 		Guest guest1 = new Guest("Joseph Cuevas", "(714) 714-7147", "joseph@gmail.com", "AMEX 0000 XXXX", date, "12:00", "Deluxe Meal Plan", "extraInfo" );
 		System.out.println(guest);
 		System.out.println(guest1);
-		
-		guest1.checkIn();
-		guest1.checkOut();
-		enterGuestInfo(guest);
-		System.out.println(guest);
 		
 	}
 }
