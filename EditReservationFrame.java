@@ -22,7 +22,7 @@ public class EditReservationFrame extends JFrame {
 		createComponents();
 		setSize(FRAME_WIDTH,FRAME_HEIGHT);
 		setTitle("Edit Reservation");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setVisible(true);
 	}
 
@@ -30,10 +30,10 @@ public class EditReservationFrame extends JFrame {
 		public void actionPerformed(ActionEvent event) {
 			if(event.getSource() == buttons.get(0)) {
 				String confirmNumOrGN = fields.get(0).getText();
-				for (Guest g : FrontDeskAgent.getGuests()) {
-					if(confirmNumOrGN.contentEquals(g.getName())){
+				for (Reservation r : FrontDeskAgent.getReservations()) {
+					if(confirmNumOrGN.equals(r.getGuest().getName()) || confirmNumOrGN.equals(Integer.toString(r.getConfirmNum()))){
 						panel2.add(new JLabel("Guest Information: "));
-						createJTextArea(g.toString(),panel2);
+						createJTextArea(r.getGuest().toString(),panel2);
 						createButtonIntoPanel("Delete Reservation",panel2);
 						panel2.setVisible(true);
 					}
@@ -90,7 +90,7 @@ public class EditReservationFrame extends JFrame {
 		createLabel("Now notifying waitlisted guest " + g.getName() + " of confirmed reservation...", panel);
 		notifyGuest.setTitle("Notify Waitlist Guest");
 		notifyGuest.setSize(500,200);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		notifyGuest.add(panel);
 		notifyGuest.setVisible(true);
 	}
