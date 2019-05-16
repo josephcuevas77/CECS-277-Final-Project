@@ -94,15 +94,54 @@ public class MainFrame extends JFrame {
 			
 			if (event.getSource() == partyRoomDescriptionSubMenu.getItem(0)) {
 				System.out.println("All button from partyRoomDescriptionSubMenu");
+				JFrame frame = new JFrame();
+				JTextArea textArea = new JTextArea(); 
+				SmallPartyRoom s = new SmallPartyRoom();
+				MediumPartyRoom m = new MediumPartyRoom();
+				AquaWorld a = new AquaWorld();
+				textArea.setText("Small Party Room: " + s.getDescription() + "\nMedium Party Room: " + m.getDescription() + 
+						"\nAquaWorld Room: " + a.getDescription());
+		        	frame.add(new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
+				frame.setSize(600, 600);
+				frame.setTitle("Main Menu");
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.setVisible(true);
 			}
 			else if (event.getSource() == partyRoomDescriptionSubMenu.getItem(1)) {
 				System.out.println("Small Party Rooms button from partyRoomDescriptionSubMenu");
+				JFrame frame = new JFrame();
+				JTextArea textArea = new JTextArea(); 
+				SmallPartyRoom a = new SmallPartyRoom();
+				textArea.setText(a.getDescription());
+		        	frame.add(new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
+				frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+				frame.setTitle("Small Party Room");
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.setVisible(true);
 			}
 			else if (event.getSource() == partyRoomDescriptionSubMenu.getItem(2)) {
 				System.out.println("Medium Party Rooms button from partyRoomDescriptionSubMenu");
+				JFrame frame = new JFrame();
+				JTextArea textArea = new JTextArea(); 
+				MediumPartyRoom a = new MediumPartyRoom();
+				textArea.setText(a.getDescription());
+		        	frame.add(new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
+				frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);				
+				frame.setTitle("Medium Party Room");
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.setVisible(true);
 			}
 			else if (event.getSource() == partyRoomDescriptionSubMenu.getItem(3)) {
 				System.out.println("Aqua World button from partyRoomDescriptionSubMenu");
+				JFrame frame = new JFrame();
+				JTextArea textArea = new JTextArea(); 
+				AquaWorld a = new AquaWorld();
+				textArea.setText(a.getDescription());
+		        	frame.add(new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED));
+				frame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+				frame.setTitle("Aqua World");
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.setVisible(true);
 			}
 			if (event.getSource() == loungesDescriptionSubMenu.getItem(0)) {
 				System.out.println("All button from loungesDescriptionSubMenu");
