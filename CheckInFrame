@@ -66,7 +66,6 @@ public class CheckInFrame extends JFrame {
 
 		public void actionPerformed(ActionEvent event) {
 			if (event.getSource() == buttons.get(0)) {
-				System.out.println("DASDFASDF");
 				try {
 					String[] stringDate = textField.getText().split("/");
 					int[] date = new int[stringDate.length];
@@ -86,14 +85,13 @@ public class CheckInFrame extends JFrame {
 				list.setVisible(true);
 			}
 			if (event.getSource() == buttons.get(1)) {
-				
+				Guest g = guests.get(list.getSelectedIndex());
+				System.out.println(g);
+				//FrontDeskAgent.checkIn(g);
 			}
 			if (event.getSource() == buttons.get(2)) {
 				dispose();
 			}
-			
-			
-
 		}	
 	}
 }
