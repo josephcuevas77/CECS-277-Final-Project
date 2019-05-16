@@ -179,19 +179,31 @@ public class MainFrame extends JFrame {
 			//Check-in from MainFrame
 			if (event.getSource() == manageReservationSubMenu.getItem(0)) {
 				System.out.println("Check-in from MainFrame");
+				JFrame frame = new CheckInFrame();
+				frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				frame.setVisible(true);
 			}
 			//Check-out from MainFrame
 			else if (event.getSource() == manageReservationSubMenu.getItem(1)) {
 				System.out.println("Check-out from MainFrame");
+				JFrame frame = new CheckOutFrame();
+				frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				frame.setVisible(true);
 			}
 			
 			//All button from partyRoomReservationSubMenu
 			if (event.getSource() == reservationsMenu.getItem(0)) {
 				System.out.println("New Reservation");
+				JFrame frame = new NewReservationFrame();
+				frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				frame.setVisible(true);
 			}
 			//Small Party Rooms button from partyRoomReservationSubMenu
 			else if (event.getSource() == reservationsMenu.getItem(1)) {
 				System.out.println("Edit Reservation");
+				JFrame frame = new EditReservationFrame();
+				frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				frame.setVisible(true);
 			}
 		}	
 	}
