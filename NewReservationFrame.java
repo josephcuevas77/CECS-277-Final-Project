@@ -9,6 +9,7 @@ import javax.swing.*;
 public class NewReservationFrame extends JFrame {
 
 	public static void main(String[] args) {
+		FrontDeskAgent.generateAllRooms();
 		NewReservationFrame hi = new NewReservationFrame();
 		hi.setVisible(true);
 	}
@@ -151,10 +152,9 @@ public class NewReservationFrame extends JFrame {
 				System.out.println(creditCardInformation);
 				Guest g = new Guest(textFields.get(0).getText(), textFields.get(1).getText(), textFields.get(2).getText(), creditCardInformation, d, textFields.get(5).getText(), (String)comboBoxes.get(0).getSelectedItem(), textFields.get(6).getText());
 				System.out.println(g);
-				
-				Reservation r = new Reservation();
 
-//				FrontDeskAgent.addReservation(r);
+				FrontDeskAgent.addReservation(g, comboBoxes.get(0).getSelectedIndex());
+				cancelButton.setText("Close");
 			}
 			
 			

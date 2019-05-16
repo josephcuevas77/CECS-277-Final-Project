@@ -14,25 +14,25 @@ public class FrontDeskAgent {
 	private static ArrayList<Reservation> reservations = new ArrayList<Reservation>();
 	private static ArrayList<Reservation> waitlist = new ArrayList<Reservation>();
 
-	private static ArrayList<AquaWorld> AquaWorldRooms = new ArrayList<AquaWorld>();
-	private static ArrayList<SmallPartyRoom> SmallPartyRooms = new ArrayList<SmallPartyRoom>();
-	private static ArrayList<MediumPartyRoom> MediumPartyRooms = new ArrayList<MediumPartyRoom>();
-	private static ArrayList<KaraokeLounge> KaraokeLounges = new ArrayList<KaraokeLounge>();
-	private static ArrayList<AdultsBilliardsLounge> AdultBilliardsLounges = new ArrayList<AdultsBilliardsLounge>();
+	private static ArrayList<BaseRoom> AquaWorldRooms = new ArrayList<BaseRoom>();
+	private static ArrayList<BaseRoom> SmallPartyRooms = new ArrayList<BaseRoom>();
+	private static ArrayList<BaseRoom> MediumPartyRooms = new ArrayList<BaseRoom>();
+	private static ArrayList<BaseRoom> KaraokeLounges = new ArrayList<BaseRoom>();
+	private static ArrayList<BaseRoom> AdultBilliardsLounges = new ArrayList<BaseRoom>();
 
 	public static void generateAllRooms() {
 		if(AquaWorldRooms.size()==0) 
-			for(int i = 0 ; i < BaseRoomFactory.MAX_AQUA_WORLD_ROOMS; i++) factory.createRoom(0);
+			for(int i = 0 ; i < BaseRoomFactory.MAX_AQUA_WORLD_ROOMS; i++) AquaWorldRooms.add(factory.createRoom(0));
 		if(SmallPartyRooms.size()==0)
-			for(int i = 0 ; i < BaseRoomFactory.MAX_SMALL_PARTY_ROOMS; i++) factory.createRoom(1);
+			for(int i = 0 ; i < BaseRoomFactory.MAX_SMALL_PARTY_ROOMS; i++) SmallPartyRooms.add(factory.createRoom(1));
 		if(MediumPartyRooms.size()==0)
-			for(int i = 0 ; i < BaseRoomFactory.MAX_MEDIUM_PARTY_ROOMS; i++) factory.createRoom(2);
+			for(int i = 0 ; i < BaseRoomFactory.MAX_MEDIUM_PARTY_ROOMS; i++) MediumPartyRooms.add(factory.createRoom(2));
 		if(KaraokeLounges.size()==0)
-			for(int i = 0 ; i < BaseRoomFactory.MAX_KARAOKE_LOUNGE; i++) factory.createRoom(3);
+			for(int i = 0 ; i < BaseRoomFactory.MAX_KARAOKE_LOUNGE; i++) KaraokeLounges.add(factory.createRoom(3));
 		if(AdultBilliardsLounges.size()==0)
-			for(int i = 0 ; i < BaseRoomFactory.MAX_ADULT_BILLIARDS_LOUNGE; i++) factory.createRoom(4);
+			for(int i = 0 ; i < BaseRoomFactory.MAX_ADULT_BILLIARDS_LOUNGE; i++) AdultBilliardsLounges.add(factory.createRoom(4));
 	}
-	
+
 	/**
 	 * Views if room is available at the time requested
 	 * @return boolean of true if room is free and false if otherwise
@@ -82,7 +82,7 @@ public class FrontDeskAgent {
 	 * Adds reservation to waitlist if full
 	 * @param r - reservation to be added
 	 */
-	public void addToWaitlist(Reservation r) {
+	public static void addToWaitlist(Reservation r) {
 		waitlist.add(r);
 	}
 	
@@ -90,15 +90,29 @@ public class FrontDeskAgent {
 	 * Removes reservation from waitlist
 	 * @param r - reservation
 	 */
-	public void removeFromWaitlist(Reservation r) {
+	public static void removeFromWaitlist(Reservation r) {
 		waitlist.remove(r);
 	}
 	
-	public void addReservation(Reservation r) {
+	public static void addReservation(Guest g, int num) {
+		Reservation r = new Reservation();
+		switch(num) {
+		case 0:
+			r.setBaseRoom(AquaWorldRooms.get(0));
+		case 1:
+			r.setBaseRoom(SmallPartyRooms.get(0));
+		case 2:
+			r.setBaseRoom(MediumPartyRooms.get(0));
+		case 3:
+			r.setBaseRoom(KaraokeLounges.get(0));
+		case 4:
+			r.setBaseRoom(AdultBilliardsLounges.get(0));
+		}
+		r.setDate(g.getDate());
 		reservations.add(r);
 	}
 	
-	public void removeReservation(Reservation r) {
+	public static void removeReservation(Reservation r) {
 		reservations.remove(r);
 	}
 	
@@ -106,7 +120,7 @@ public class FrontDeskAgent {
 	 * updates the guest info
 	 * @param g - guest
 	 */
-	public void updateGuestInfo(Guest g, String name, String phoneNumber, String email, String creditCardInfo, Date date, String time, String mealPlanInfo, String extraInfo) {		
+	public static void updateGuestInfo(Guest g, String name, String phoneNumber, String email, String creditCardInfo, Date date, String time, String mealPlanInfo, String extraInfo) {		
 //		System.out.print("What would u like to change? \n1. Name\n2. Phone Number\n3. Email\n4. Credit Card Info"
 //				+ "\n5. Date\n6. Time\n7. MealPlan\n8. Extra Info\nOption: ");
 //		int choice = in.nextInt();
@@ -164,7 +178,7 @@ public class FrontDeskAgent {
 	 * @param d - date of reservation
 	 * @return true if reserved and false otherwise
 	 */
-	public boolean isReserved(Date d) {
+	public static boolean isReserved(Date d) {
 		for (Reservation r : getReservations()) {
 			if (r.getDate().equals(d)) {
 				return true;
@@ -176,7 +190,7 @@ public class FrontDeskAgent {
 	/**
 	 * Collects money from customer
 	 */
-	public boolean collectAmountDue(Reservation r, int amount) {
+	public static boolean collectAmountDue(Reservation r, int amount) {
 		BaseRoom room = r.getBaseRoom();
 		Guest g = r.getGuest();
 		double cost = room.getFinalCost();
@@ -195,18 +209,5 @@ public class FrontDeskAgent {
 	public static ArrayList<Reservation> getReservations() {
 		return reservations;
 	}
-	
-	public static boolean checkConfirmNum(Reservation r, int cNum) { return(r.getConfirmNum() == cNum); }
-	
-	public static void main(String[] args) {
-		FrontDeskAgent f = new FrontDeskAgent();
-		Guest g = new Guest();
-		while (true) {
-		f.updateGuestInfo(g);
-		System.out.println();
-		System.out.println(g.toString());
-		}
-	}
-
 
 }
