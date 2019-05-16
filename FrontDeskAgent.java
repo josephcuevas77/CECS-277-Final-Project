@@ -100,13 +100,13 @@ public class FrontDeskAgent {
 		case 0:
 			r.setBaseRoom(AquaWorldRooms.get(0));
 		case 1:
-			r.setBaseRoom(SmallPartyRooms.get(0));
+			r.setBaseRoom(SmallPartyRooms.get(1));
 		case 2:
-			r.setBaseRoom(MediumPartyRooms.get(0));
+			r.setBaseRoom(MediumPartyRooms.get(2));
 		case 3:
-			r.setBaseRoom(KaraokeLounges.get(0));
+			r.setBaseRoom(KaraokeLounges.get(3));
 		case 4:
-			r.setBaseRoom(AdultBilliardsLounges.get(0));
+			r.setBaseRoom(AdultBilliardsLounges.get(4));
 		}
 		r.setDate(g.getDate());
 		reservations.add(r);
