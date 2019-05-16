@@ -3,8 +3,7 @@ package FinalExam;
 public class ConcreteRoomFactory extends BaseRoomFactory {
 
 	public static String[] ROOMS = {"Aqua World", "Small Party Room", "Medium Party Room", "Karaoke Lounge", "Adult Billiards Lounge"};
-	@Override
-	public BaseRoom createRoom(int num) {
+	protected BaseRoom createRoom(int num) {
 		switch(num) {
 			case(0): //Aqua World
 				return new AquaWorld();
@@ -15,7 +14,7 @@ public class ConcreteRoomFactory extends BaseRoomFactory {
 			case(3): //Karaoke Lounge
 				return new KaraokeLounge();
 			case(4): //Adult Billiards Lounge
-				return new AdultBilliardsLounge();
+				return new AdultsBilliardsLounge();
 			default:
 				return null;
 			
