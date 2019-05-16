@@ -2,7 +2,6 @@ package FinalExam;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -20,8 +19,7 @@ public class MainFrame extends JFrame {
 	private JMenu reservationsMenu = new JMenu("Reservations");
 	private JMenu partyRoomDescriptionSubMenu = new JMenu("Party Rooms");
 	private JMenu loungesDescriptionSubMenu = new JMenu("Lounges");
-	private JMenu partyRoomReservationSubMenu = new JMenu("Party Rooms");
-	private JMenu loungesReservationSubMenu = new JMenu("Lounges");
+	private JMenu manageReservationSubMenu = new JMenu("Manage Current Reservation");
 	
 	private JMenuItem menuItem;
 	private JPanel panel = new JPanel();
@@ -45,38 +43,34 @@ public class MainFrame extends JFrame {
 		descriptionMenu.add(partyRoomDescriptionSubMenu);
 		descriptionMenu.add(loungesDescriptionSubMenu);
 		
+		menuItem = new JMenuItem("New Reservation");
+		menuItem.addActionListener(listener);
+		reservationsMenu.add(menuItem);
+		menuItem = new JMenuItem("Edit Reservation");
+		menuItem.addActionListener(listener);
+		reservationsMenu.add(menuItem);
 
 		menuItem = new JMenuItem("Check-in");
 		menuItem.addActionListener(listener);
-		reservationsMenu.add(menuItem);
+		manageReservationSubMenu.add(menuItem);
 		
 		menuItem = new JMenuItem("Check-out");
 		menuItem.addActionListener(listener);
-		reservationsMenu.add(menuItem);
+		manageReservationSubMenu.add(menuItem);
 		
-		reservationsMenu.add(partyRoomReservationSubMenu);
-		reservationsMenu.add(loungesReservationSubMenu);
+		
+		reservationsMenu.add(manageReservationSubMenu);
 		
 		for(String s: rooms) {
 			menuItem = new JMenuItem(s);
 			menuItem.addActionListener(listener);
 			partyRoomDescriptionSubMenu.add(menuItem);
-			
-			menuItem = new JMenuItem(s);
-			menuItem.addActionListener(listener);
-			partyRoomReservationSubMenu.add(menuItem);
 		}
-		
-		
 		
 		for(String s: lounges) {
 			menuItem = new JMenuItem(s);
 			menuItem.addActionListener(listener);
 			loungesDescriptionSubMenu.add(menuItem);
-
-			menuItem = new JMenuItem(s);
-			menuItem.addActionListener(listener);
-			loungesReservationSubMenu.add(menuItem);
 		}
 		
 		panel.add(mainMenuBar);
@@ -183,41 +177,21 @@ public class MainFrame extends JFrame {
 				frame.setVisible(true);
 			}
 			//Check-in from MainFrame
-			if (event.getSource() == reservationsMenu.getItem(0)) {
+			if (event.getSource() == manageReservationSubMenu.getItem(0)) {
 				System.out.println("Check-in from MainFrame");
 			}
 			//Check-out from MainFrame
-			else if (event.getSource() == reservationsMenu.getItem(1)) {
+			else if (event.getSource() == manageReservationSubMenu.getItem(1)) {
 				System.out.println("Check-out from MainFrame");
 			}
 			
 			//All button from partyRoomReservationSubMenu
-			if (event.getSource() == partyRoomReservationSubMenu.getItem(0)) {
-				System.out.println("All button from partyRoomReservationSubMenu");
+			if (event.getSource() == reservationsMenu.getItem(0)) {
+				System.out.println("New Reservation");
 			}
 			//Small Party Rooms button from partyRoomReservationSubMenu
-			else if (event.getSource() == partyRoomReservationSubMenu.getItem(1)) {
-				System.out.println("Small Party Rooms button from partyRoomReservationSubMenu");
-			}
-			//Medium Party Rooms button from partyRoomReservationSubMenu
-			else if (event.getSource() == partyRoomReservationSubMenu.getItem(2)) {
-				System.out.println("Medium Party Rooms button from partyRoomReservationSubMenu");
-			}
-			//Aqua World button from partyRoomReservationSubMenu
-			else if (event.getSource() == partyRoomReservationSubMenu.getItem(3)) {
-				System.out.println("Aqua World button from partyRoomReservationSubMenu");
-			}
-			//All button from loungesReservationSubMenu
-			if (event.getSource() == loungesReservationSubMenu.getItem(0)) {
-				System.out.println("All button from loungesReservationSubMenu");
-			}
-			//Karaoke Lounge button from loungesReservationSubMenu
-			else if (event.getSource() == loungesReservationSubMenu.getItem(1)) {
-				System.out.println("Karaoke Lounge button from loungesReservationSubMenu");
-			}
-			//Adult Billiards Lounge button from loungesReservationSubMenu
-			else if (event.getSource() == loungesReservationSubMenu.getItem(2)) {
-				System.out.println("Adult Billiards Lounge button from loungesReservationSubMenu");
+			else if (event.getSource() == reservationsMenu.getItem(1)) {
+				System.out.println("Edit Reservation");
 			}
 		}	
 	}
